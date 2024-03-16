@@ -6,16 +6,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-@Data
 @Entity
-public class Product {
+@Data
+public class Shelf {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private String name;
-	private int quantity;
-	private int shelf_id;
+	private int occupied_quantity;
+	private int stock_id;
 
 }
