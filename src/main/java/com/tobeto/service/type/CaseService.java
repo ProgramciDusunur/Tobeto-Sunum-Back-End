@@ -1,4 +1,4 @@
-package com.tobeto.service;
+package com.tobeto.service.type;
 
 import java.util.Optional;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
-import com.tobeto.entity.Case;
-import com.tobeto.repository.CaseRepository;
+import com.tobeto.entity.type.Case;
+import com.tobeto.repository.type.CaseRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.Data;

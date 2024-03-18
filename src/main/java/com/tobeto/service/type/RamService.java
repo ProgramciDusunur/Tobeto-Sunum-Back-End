@@ -1,12 +1,12 @@
-package com.tobeto.service;
+package com.tobeto.service.type;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tobeto.entity.Ram;
-import com.tobeto.repository.RamRepository;
+import com.tobeto.entity.type.Ram;
+import com.tobeto.repository.type.RamRepository;
 
 import jakarta.transaction.Transactional;
 
@@ -14,7 +14,7 @@ import jakarta.transaction.Transactional;
 public class RamService {
 	@Autowired
 	RamRepository ramRepository;
-	
+
 	public void createRam(Ram ram) {
 		ramRepository.save(ram);
 	}
@@ -23,9 +23,10 @@ public class RamService {
 		Optional<Ram> ram = ramRepository.findById(id);
 		return ram.orElseThrow();
 	}
-	public void  updateRam(int id, Ram ram) {
-		
-		Ram currentRam= readRam(id);
+
+	public void updateRam(int id, Ram ram) {
+
+		Ram currentRam = readRam(id);
 //		currentCase.setBrand(computerCase.getBrand());
 //		currentCase.setModel(computerCase.getModel());
 //		currentCase.setPsu(computerCase.isPsu());
@@ -33,9 +34,9 @@ public class RamService {
 //		currentCase.setPsu_watt(computerCase.getPsu_watt());
 //		currentCase.setTransparent(computerCase.isTransparent());
 //		Bu farklı bir yol
-		currentRam=ram;
+		currentRam = ram;
 		createRam(currentRam);
-		
+
 	}
 
 	@Transactional

@@ -1,13 +1,12 @@
-package com.tobeto.service;
+package com.tobeto.service.type;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-import com.tobeto.entity.Gpu;
-import com.tobeto.repository.GpuRepository;
+import com.tobeto.entity.type.Gpu;
+import com.tobeto.repository.type.GpuRepository;
 
 import jakarta.transaction.Transactional;
 

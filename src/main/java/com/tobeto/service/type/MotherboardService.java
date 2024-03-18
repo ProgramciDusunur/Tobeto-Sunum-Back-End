@@ -1,12 +1,12 @@
-package com.tobeto.service;
+package com.tobeto.service.type;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tobeto.entity.Motherboard;
-import com.tobeto.repository.MotherboardRepository;
+import com.tobeto.entity.type.Motherboard;
+import com.tobeto.repository.type.MotherboardRepository;
 
 import jakarta.transaction.Transactional;
 

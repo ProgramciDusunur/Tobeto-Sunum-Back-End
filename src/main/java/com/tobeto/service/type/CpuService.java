@@ -1,15 +1,15 @@
-package com.tobeto.service;
+package com.tobeto.service.type;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tobeto.entity.Case;
-import com.tobeto.entity.Cpu;
-import com.tobeto.entity.CpuCooler;
-import com.tobeto.repository.CaseRepository;
-import com.tobeto.repository.CpuRepository;
+import com.tobeto.entity.type.Case;
+import com.tobeto.entity.type.Cpu;
+import com.tobeto.entity.type.CpuCooler;
+import com.tobeto.repository.type.CaseRepository;
+import com.tobeto.repository.type.CpuRepository;
 
 import jakarta.transaction.Transactional;
 

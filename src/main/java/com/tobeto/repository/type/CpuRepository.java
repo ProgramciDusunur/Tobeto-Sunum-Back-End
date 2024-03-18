@@ -1,15 +1,13 @@
-package com.tobeto.repository;
+package com.tobeto.repository.type;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.tobeto.entity.Cpu;
-
+import com.tobeto.entity.type.Cpu;
 
 @Repository
-	public interface CpuRepository extends JpaRepository<Cpu,Integer> {
-		Optional<Cpu> findById(int id);
+public interface CpuRepository extends JpaRepository<Cpu, Integer> {
+	Optional<Cpu> findById(int id);
 }
-

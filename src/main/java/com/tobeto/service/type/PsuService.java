@@ -1,13 +1,12 @@
-package com.tobeto.service;
+package com.tobeto.service.type;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tobeto.entity.Psu;
-
-import com.tobeto.repository.PsuRepository;
+import com.tobeto.entity.type.Psu;
+import com.tobeto.repository.type.PsuRepository;
 
 import jakarta.transaction.Transactional;
 

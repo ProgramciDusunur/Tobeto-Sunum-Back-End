@@ -1,4 +1,4 @@
-package com.tobeto.entity;
+package com.tobeto.entity.type;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
