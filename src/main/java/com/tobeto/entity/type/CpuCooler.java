@@ -1,9 +1,6 @@
 package com.tobeto.entity.type;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -13,7 +10,8 @@ public class CpuCooler {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String type;
-	private String fan_length;
+	@Column(name = "fan_length")
+	private String fanLength;
 	private int rpm;
 	private String material;
 	private String led;

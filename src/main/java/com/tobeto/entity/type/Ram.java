@@ -1,9 +1,6 @@
 package com.tobeto.entity.type;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -14,8 +11,10 @@ public class Ram {
 	private int id;
 	private String type;
 	private int capacity;
-	private int frequency_speed;
-	private String channel_type;
+	@Column(name = "frequency_speed")
+	private int frequencySpeed;
+	@Column(name = "channel_type")
+	private String channelType;
 	private String compatibility;
 	private String brand;
 	private String model;

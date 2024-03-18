@@ -23,7 +23,7 @@ public class MotherboardService {
 		Optional<Motherboard> cpu = motherboardRepository.findById(id);
 		return cpu.orElseThrow();
 	}
-	public void  updateCpu(int id, Motherboard motherboard) {
+	public void updateCpu(int id, Motherboard motherboard) {
 		
 		Motherboard currentMotherboard= readMotherboard(id);
 //		currentCase.setBrand(computerCase.getBrand());

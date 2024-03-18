@@ -1,4 +1,4 @@
-package com.tobeto.controller;
+package com.tobeto.controller.type;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +16,7 @@ public class GpuController {
 	@PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public GpuResponseDTO addSubType(@RequestBody GpuRequestDTO dto) {
 		System.out.println("Gpu Post calisiyor.");
-		System.out.println(dto.getMemory_interface());
+		System.out.println(dto.getMemoryInterface());
 		System.out.println(dto.getModel());
 		System.out.println(dto.getProducer());
 		System.out.println(dto.getBrand());

@@ -1,9 +1,6 @@
 package com.tobeto.entity.type;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -14,9 +11,11 @@ public class Case {
 	private int id;
 	private String brand;
 	private boolean psu;
-	private String psu_location;
+	@Column(name = "psu_location")
+	private String psuLocation;
 	private boolean transparent;
-	private int psu_watt;
+	@Column(name = "psu_watt")
+	private int psuWatt;
 	private String model;
 
 }

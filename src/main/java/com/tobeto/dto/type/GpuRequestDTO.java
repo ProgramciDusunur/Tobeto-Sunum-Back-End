@@ -10,6 +10,6 @@ public class GpuRequestDTO {
 	private String series;
 	private String model;
 	private int vram;
-	private int memory_interface;
+	private int memoryInterface;
 
 }

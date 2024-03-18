@@ -1,4 +1,4 @@
-package com.tobeto.controller;
+package com.tobeto.controller.type;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

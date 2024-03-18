@@ -1,9 +1,6 @@
 package com.tobeto.entity.type;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -16,7 +13,8 @@ public class Psu {
 	private String efficiency;
 	private boolean modular;
 	private String type;
-	private boolean pcie_gen_5_support;
+	@Column(name = "pcie_gen_5_support")
+	private boolean pcieGen5Support;
 	private String brand;
 	private String model;
 

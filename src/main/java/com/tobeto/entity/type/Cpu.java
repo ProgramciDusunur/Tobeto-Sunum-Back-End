@@ -1,9 +1,6 @@
 package com.tobeto.entity.type;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -14,10 +11,14 @@ public class Cpu {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String brand;
-	private int clock_speed;
-	private String socket_type;
+
+	@Column(name = "clock_speed")
+	private int clockSpeed;
+	@Column(name = "socket_type")
+	private String socketType;
 	private String generation;
 	private String series;
-	private int core_count;
+	@Column(name = "core_count")
+	private int coreCount;
 	private String model;
 }

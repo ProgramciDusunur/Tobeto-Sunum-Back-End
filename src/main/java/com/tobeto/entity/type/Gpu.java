@@ -1,9 +1,6 @@
 package com.tobeto.entity.type;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -17,6 +14,7 @@ public class Gpu {
 	private String series;
 	private String model;
 	private int vram;
-	private int memory_interface;
+	@Column(name = "memory_interface")
+	private int memoryInterface;
 
 }
