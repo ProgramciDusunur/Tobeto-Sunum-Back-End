@@ -1,4 +1,4 @@
 package com.tobeto.dto.type;
 
-public class PsuResponseDTO {
+public class PsuAddResponseDTO {
 }

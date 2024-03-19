@@ -3,7 +3,7 @@ package com.tobeto.dto.type;
 import lombok.Data;
 
 @Data
-public class RamRequestDTO {
+public class RamAddRequestDTO {
     private String type;
     private int capacity;
     private int frequencySpeed;

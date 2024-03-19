@@ -4,13 +4,15 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tobeto.dto.SuccessResponseDTO;
-import com.tobeto.dto.type.GpuRequestDTO;
+import com.tobeto.dto.type.GpuAddRequestDTO;
+import com.tobeto.dto.type.GpuDelRequestDTO;
 import com.tobeto.entity.type.Gpu;
 import com.tobeto.service.type.GpuService;
 
@@ -27,7 +29,7 @@ public class GpuController {
 	private ModelMapper responseMapper;
 
 	@PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public SuccessResponseDTO addSubType(@RequestBody GpuRequestDTO dto) {
+	public SuccessResponseDTO addSubType(@RequestBody GpuAddRequestDTO dto) {
 		System.out.println("Gpu Post calisiyor.");
 		System.out.println(dto.getMemoryInterface());
 		System.out.println(dto.getModel());
@@ -41,5 +43,16 @@ public class GpuController {
 		// System.out.println(dto.getModel());
 		return new SuccessResponseDTO();
 
+	}
+	@DeleteMapping(value = "/del", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public SuccessResponseDTO delSubType(@RequestBody GpuDelRequestDTO dto) {
+		System.out.println("Gpu Del calisiyor.");
+		
+		
+		gpuService.deleteGpu(dto.getId());
+		
+
+		// System.out.println(dto.getModel());
+		return new SuccessResponseDTO();
 	}
 }

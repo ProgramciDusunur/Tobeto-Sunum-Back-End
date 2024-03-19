@@ -3,7 +3,7 @@ package com.tobeto.dto.type;
 import lombok.Data;
 
 @Data
-public class PsuRequestDTO {
+public class PsuAddRequestDTO {
     private int watt;
     private String efficiency;
     private boolean modular;

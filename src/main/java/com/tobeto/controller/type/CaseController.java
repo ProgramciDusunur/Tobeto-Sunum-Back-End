@@ -3,13 +3,16 @@ package com.tobeto.controller.type;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tobeto.dto.SuccessResponseDTO;
-import com.tobeto.dto.type.CaseRequestDTO;
+import com.tobeto.dto.type.CaseAddRequestDTO;
+import com.tobeto.dto.type.CaseDelRequestDTO;
 import com.tobeto.entity.type.Case;
 import com.tobeto.service.type.CaseService;
 
@@ -27,10 +30,21 @@ public class CaseController {
 	@Qualifier("responseMapper")
 	private ModelMapper responseMapper;
 
-	@PostMapping("/create")
-	public SuccessResponseDTO createCase(@RequestBody CaseRequestDTO dto) {
+	@PostMapping("/add")
+	public SuccessResponseDTO createCase(@RequestBody CaseAddRequestDTO dto) {
 		Case casee = requestMapper.map(dto, Case.class);
 		caseService.createCase(casee);
+		return new SuccessResponseDTO();
+	}
+	@DeleteMapping(value = "/del", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public SuccessResponseDTO delSubType(@RequestBody CaseDelRequestDTO dto) {
+		System.out.println("Case Del calisiyor.");
+		
+		
+		caseService.deleteCase(dto.getId());
+		
+
+		// System.out.println(dto.getModel());
 		return new SuccessResponseDTO();
 	}
 }

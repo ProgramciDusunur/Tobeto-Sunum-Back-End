@@ -1,5 +1,5 @@
 package com.tobeto.dto.type;
 
-public class GpuResponseDTO {
+public class GpuAddResponseDTO {
 
 }

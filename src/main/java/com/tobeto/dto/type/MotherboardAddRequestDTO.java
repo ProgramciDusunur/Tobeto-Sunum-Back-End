@@ -3,7 +3,7 @@ package com.tobeto.dto.type;
 import lombok.Data;
 
 @Data
-public class MotherboardRequestDTO {
+public class MotherboardAddRequestDTO {
 	private String cpuSocketType;
 	// Intel = true, AMD = false
 	private boolean cpuCompatibility;

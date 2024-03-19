@@ -17,5 +17,6 @@ public class Case {
 	@Column(name = "psu_watt")
 	private int psuWatt;
 	private String model;
+	private String type;
 
 }

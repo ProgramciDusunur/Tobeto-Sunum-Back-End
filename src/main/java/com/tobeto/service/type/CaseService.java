@@ -44,7 +44,7 @@ public class CaseService {
 	}
 
 	@Transactional
-	public void deleteEmployee(int id) {
+	public void deleteCase(int id) {
 		caseRepository.deleteById(id);
 	}
 }
