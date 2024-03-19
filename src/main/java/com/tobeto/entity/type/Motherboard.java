@@ -1,6 +1,10 @@
 package com.tobeto.entity.type;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Data;
 
 @Entity
@@ -12,6 +16,7 @@ public class Motherboard {
 	@Column(name = "cpu_socket_type")
 	private String cpuSocketType;
 	@Column(name = "cpu_compatibility")
+	// Intel = true, AMD = false
 	private boolean cpuCompatibility;
 	@Column(name = "ram_type")
 	private String ramType;

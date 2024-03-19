@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.tobeto.entity.type.Gpu;
 
 @Repository
-
 public interface GpuRepository extends JpaRepository<Gpu, Integer> {
 	Optional<Gpu> findById(int id);
 }

@@ -1,39 +1,39 @@
 CREATE TABLE IF NOT EXISTS `depo`.`cpu` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `brand` VARCHAR(50) NOT NULL,
-  `clock_speed` INT NOT NULL, -- Örnek olarak, saat hızı gibi sayısal bir değer kullanılıyorsa DECIMAL tipi kullanılabilir.
+  `clock_speed` INT NOT NULL, 
   `socket_type` VARCHAR(50) NOT NULL,
   `generation` VARCHAR(50) NOT NULL,
   `series` VARCHAR(50) NOT NULL,
-  `core_count` INT NOT NULL, -- Örnek olarak, çekirdek sayısı gibi tam sayı değerler için INT tipi kullanılabilir.
+  `core_count` INT NOT NULL, 
   `model` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC) VISIBLE, -- Marka sütunu için UNIQUE INDEX eklendi.
-  UNIQUE INDEX `model_UNIQUE` (`model` ASC) VISIBLE
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC),
+  UNIQUE INDEX `model_UNIQUE` (`model` ASC)
 ) ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 CREATE TABLE IF NOT EXISTS `depo`.`motherboard` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `cpu_socket_type` VARCHAR(50) NOT NULL,
-  `cpu_compatibility` BOOLEAN NOT NULL, -- Örnek olarak, uyumluluk durumu gibi doğru/yanlış değerler için BOOLEAN tipi kullanılabilir.
+  `cpu_compatibility` BOOLEAN NOT NULL, 
   `ram_type` VARCHAR(50) NOT NULL,
   `size` VARCHAR(50) NOT NULL,
-  `ram_slots` INT NOT NULL, -- Örnek olarak, RAM slot sayısı gibi tam sayı değerler için INT tipi kullanılabilir.
+  `ram_slots` INT NOT NULL, 
   `brand` VARCHAR(45) NOT NULL,
   `model` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC) VISIBLE, -- Marka sütunu için UNIQUE INDEX eklendi.
-  UNIQUE INDEX `model_UNIQUE` (`model` ASC) VISIBLE
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC),
+  UNIQUE INDEX `model_UNIQUE` (`model` ASC)
 ) ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 CREATE TABLE IF NOT EXISTS `depo`.`psu` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `watt` INT NOT NULL,
   `efficiency` VARCHAR(50) NOT NULL,
   `modular` BOOLEAN NOT NULL,
@@ -42,15 +42,15 @@ CREATE TABLE IF NOT EXISTS `depo`.`psu` (
   `brand` VARCHAR(45) NOT NULL,
   `model` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC) VISIBLE, -- Marka sütunu için UNIQUE INDEX eklendi.
-  UNIQUE INDEX `model_UNIQUE` (`model` ASC) VISIBLE
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC),
+  UNIQUE INDEX `model_UNIQUE` (`model` ASC)
 ) ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 CREATE TABLE IF NOT EXISTS `depo`.`cpu_cooler` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `type` VARCHAR(50) NOT NULL,
   `fan_length` VARCHAR(50) NOT NULL,
   `rpm` INT NOT NULL,
@@ -59,15 +59,15 @@ CREATE TABLE IF NOT EXISTS `depo`.`cpu_cooler` (
   `brand` VARCHAR(50) NOT NULL,
   `model` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC) VISIBLE, -- Marka sütunu için UNIQUE INDEX eklendi.
-  UNIQUE INDEX `model_UNIQUE` (`model` ASC) VISIBLE
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC),
+  UNIQUE INDEX `model_UNIQUE` (`model` ASC)
 ) ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 CREATE TABLE IF NOT EXISTS `depo`.`ram` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `type` VARCHAR(50) NOT NULL,
   `capacity` INT NOT NULL,
   `frequency_speed` INT NOT NULL,
@@ -76,15 +76,15 @@ CREATE TABLE IF NOT EXISTS `depo`.`ram` (
   `brand` VARCHAR(45) NOT NULL,
   `model` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC) VISIBLE, -- Marka sütunu için UNIQUE INDEX eklendi.
-  UNIQUE INDEX `model_UNIQUE` (`model` ASC) VISIBLE
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC),
+  UNIQUE INDEX `model_UNIQUE` (`model` ASC)
 ) ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 CREATE TABLE IF NOT EXISTS `depo`.`gpu` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `brand` VARCHAR(50) NOT NULL,
   `producer` VARCHAR(50) NOT NULL,
   `series` VARCHAR(50) NOT NULL,
@@ -92,8 +92,8 @@ CREATE TABLE IF NOT EXISTS `depo`.`gpu` (
   `vram` INT NOT NULL,
   `memory_interface` INT NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC) VISIBLE -- Marka sütunu için UNIQUE INDEX eklendi.
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC)
 ) ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -104,10 +104,10 @@ CREATE TABLE IF NOT EXISTS `depo`.`case` (
   `brand` VARCHAR(50) NOT NULL,
   `model` VARCHAR(100) NOT NULL,
   `type` VARCHAR(50) NOT NULL,
-  `psu` TINYINT NOT NULL, -- PSU'nun türünü belirlemek için TINYINT kullanıyorum.
+  `psu` TINYINT NOT NULL, 
   `psu_location` VARCHAR(50) NOT NULL,
-  `transparent` TINYINT NOT NULL, -- Şeffaf olup olmadığını belirtmek için TINYINT kullanıyorum.
-  `psu_watt` INT NOT NULL, -- PSU'nun watt değerini INT olarak tanımlıyorum.
+  `transparent` TINYINT NOT NULL, 
+  `psu_watt` INT NOT NULL, 
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
   UNIQUE INDEX `brand_UNIQUE` (`brand` ASC),
@@ -118,7 +118,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 CREATE TABLE IF NOT EXISTS `depo`.`shelf` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `occupied_quantity` INT NOT NULL,
   `stock_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `depo`.`shelf` (
 
 
 CREATE TABLE IF NOT EXISTS `depo`.`stock` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `type` VARCHAR(40) NOT NULL,
   `quantity` INT NOT NULL,
   `type_id` INT NOT NULL,
@@ -153,5 +153,3 @@ CREATE TABLE IF NOT EXISTS `depo`.`employee` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC)
 ) ENGINE = InnoDB;
-
-

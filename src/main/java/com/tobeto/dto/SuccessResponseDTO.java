@@ -1,4 +1,4 @@
-package com.tobeto.controller;
+package com.tobeto.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
