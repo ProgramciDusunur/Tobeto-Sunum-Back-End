@@ -3,34 +3,32 @@ package com.tobeto.service.type;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
 
-import com.tobeto.entity.type.Case;
+import com.tobeto.entity.type.DesktopCase;
 import com.tobeto.repository.type.CaseRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.Data;
-
 
 @Service
 @Data
 public class CaseService {
 	@Autowired
 	CaseRepository caseRepository;
-	
-	public void createCase(Case computerCase) {
+
+	public void createDesktopCase(DesktopCase computerCase) {
 		caseRepository.save(computerCase);
 	}
 
-	public Case readCase(int id) {
-		Optional<Case> computerCase = caseRepository.findById(id);
+	public DesktopCase readDesktopCase(int id) {
+		Optional<DesktopCase> computerCase = caseRepository.findById(id);
 		return computerCase.orElseThrow();
 	}
 
-	public void  updateCase(int id, Case computerCase) {
-		
-		Case currentCase= readCase(id);
+	public void updateDesktopCase(int id, DesktopCase computerCase) {
+
+		DesktopCase currentCase = readDesktopCase(id);
 //		currentCase.setBrand(computerCase.getBrand());
 //		currentCase.setModel(computerCase.getModel());
 //		currentCase.setPsu(computerCase.isPsu());
@@ -38,9 +36,9 @@ public class CaseService {
 //		currentCase.setPsu_watt(computerCase.getPsu_watt());
 //		currentCase.setTransparent(computerCase.isTransparent());
 //		Bu farklı bir yol
-		currentCase=computerCase;
-		createCase(currentCase);
-		
+		currentCase = computerCase;
+		createDesktopCase(currentCase);
+
 	}
 
 	@Transactional

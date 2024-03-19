@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tobeto.dto.SuccessResponseDTO;
 import com.tobeto.dto.type.CpuCoolerAddRequestDTO;
 import com.tobeto.dto.type.CpuCoolerDelRequestDTO;
-import com.tobeto.dto.type.CpuDelRequestDTO;
 import com.tobeto.service.type.CpuCoolerService;
 
 @RestController
@@ -19,6 +18,7 @@ import com.tobeto.service.type.CpuCoolerService;
 public class CpuCoolerController {
 	@Autowired
 	private CpuCoolerService cpuCoolerService;
+
 	@PostMapping("/add")
 	public SuccessResponseDTO addSubType(@RequestBody CpuCoolerAddRequestDTO dto) {
 		System.out.println("CpuCooler Post calisiyor.");
@@ -31,13 +31,12 @@ public class CpuCoolerController {
 		System.out.println(dto.getType());
 		return new SuccessResponseDTO();
 	}
+
 	@DeleteMapping(value = "/del", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public SuccessResponseDTO delSubType(@RequestBody CpuCoolerDelRequestDTO dto) {
 		System.out.println("CpuCooler Del calisiyor.");
-		
-		
+
 		cpuCoolerService.deleteCpuCooler(dto.getId());
-		
 
 		// System.out.println(dto.getModel());
 		return new SuccessResponseDTO();
