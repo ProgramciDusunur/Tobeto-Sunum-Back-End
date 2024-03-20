@@ -1,4 +1,4 @@
-package com.tobeto.dto.type;
+package com.tobeto.dto.type.cpu;
 
 import lombok.Data;
 

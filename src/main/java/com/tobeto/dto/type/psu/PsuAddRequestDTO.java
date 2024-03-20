@@ -1,4 +1,4 @@
-package com.tobeto.dto.type;
+package com.tobeto.dto.type.psu;
 
 import lombok.Data;
 

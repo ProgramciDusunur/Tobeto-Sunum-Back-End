@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tobeto.dto.SuccessResponseDTO;
-import com.tobeto.dto.type.CpuCoolerDelRequestDTO;
-import com.tobeto.dto.type.MotherboardAddRequestDTO;
-import com.tobeto.dto.type.MotherboardDelRequestDTO;
+import com.tobeto.dto.type.motherboard.MotherboardAddRequestDTO;
+import com.tobeto.dto.type.motherboard.MotherboardDelRequestDTO;
 import com.tobeto.service.type.MotherboardService;
 
 @RestController

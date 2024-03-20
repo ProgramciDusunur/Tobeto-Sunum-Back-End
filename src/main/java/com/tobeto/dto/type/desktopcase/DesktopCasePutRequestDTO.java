@@ -1,9 +1,10 @@
-package com.tobeto.dto.type;
+package com.tobeto.dto.type.desktopcase;
 
 import lombok.Data;
 
 @Data
-public class CaseAddRequestDTO {
+public class DesktopCasePutRequestDTO {
+	private int id;
 	private String brand;
 	private boolean psu;
 	private String psuLocation;
@@ -11,5 +12,4 @@ public class CaseAddRequestDTO {
 	private int psuWatt;
 	private String model;
 	private String type;
-
 }

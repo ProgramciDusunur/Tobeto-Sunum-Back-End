@@ -1,4 +1,4 @@
-package com.tobeto.dto.type;
+package com.tobeto.dto.type.motherboard;
 
 import lombok.Data;
 

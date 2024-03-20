@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tobeto.dto.SuccessResponseDTO;
-import com.tobeto.dto.type.CpuDelRequestDTO;
-import com.tobeto.dto.type.RamAddRequestDTO;
-import com.tobeto.dto.type.RamDelRequestDTO;
+import com.tobeto.dto.type.ram.RamAddRequestDTO;
+import com.tobeto.dto.type.ram.RamDelRequestDTO;
 import com.tobeto.service.type.RamService;
 
 @RestController

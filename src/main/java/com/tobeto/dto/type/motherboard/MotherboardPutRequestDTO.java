@@ -1,11 +1,11 @@
-package com.tobeto.dto.type;
+package com.tobeto.dto.type.motherboard;
 
 import lombok.Data;
 
 @Data
-public class MotherboardAddRequestDTO {
+public class MotherboardPutRequestDTO {
+	private int id;
 	private String cpuSocketType;
-	// Intel = true, AMD = false
 	private boolean cpuCompatibility;
 	private String ramType;
 	private String size;

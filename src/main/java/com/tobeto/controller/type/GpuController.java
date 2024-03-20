@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tobeto.dto.SuccessResponseDTO;
-import com.tobeto.dto.type.GpuAddRequestDTO;
-import com.tobeto.dto.type.GpuDelRequestDTO;
+import com.tobeto.dto.type.gpu.GpuAddRequestDTO;
+import com.tobeto.dto.type.gpu.GpuDelRequestDTO;
 import com.tobeto.entity.type.Gpu;
 import com.tobeto.service.type.GpuService;
 

@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tobeto.dto.SuccessResponseDTO;
-import com.tobeto.dto.type.CpuAddRequestDTO;
-import com.tobeto.dto.type.CpuDelRequestDTO;
-import com.tobeto.dto.type.CpuPutRequestDTO;
+import com.tobeto.dto.type.cpu.CpuAddRequestDTO;
+import com.tobeto.dto.type.cpu.CpuDelRequestDTO;
+import com.tobeto.dto.type.cpu.CpuPutRequestDTO;
 import com.tobeto.entity.type.Cpu;
 import com.tobeto.service.type.CpuService;
 

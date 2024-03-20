@@ -1,9 +1,10 @@
-package com.tobeto.dto.type;
+package com.tobeto.dto.type.cpucooler;
 
 import lombok.Data;
 
 @Data
-public class CpuCoolerAddRequestDTO {
+public class CpuCoolerPutRequestDTO {
+    private int id;
     private String type;
     private String fanLength;
     private int rpm;
@@ -11,4 +12,5 @@ public class CpuCoolerAddRequestDTO {
     private String led;
     private String brand;
     private String model;
+
 }

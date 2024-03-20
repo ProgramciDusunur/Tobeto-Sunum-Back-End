@@ -13,7 +13,6 @@ public class DesktopCase {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
 	private String brand;
 	private boolean psu;
 	@Column(name = "psu_location")
