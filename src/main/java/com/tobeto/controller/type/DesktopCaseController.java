@@ -1,18 +1,20 @@
 package com.tobeto.controller.type;
 
-import com.tobeto.dto.type.desktopcase.DesktopCaseDelRequestDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tobeto.dto.SuccessResponseDTO;
 import com.tobeto.dto.type.desktopcase.DesktopCaseAddRequestDTO;
+import com.tobeto.dto.type.desktopcase.DesktopCaseDelRequestDTO;
+import com.tobeto.dto.type.desktopcase.DesktopCasePutRequestDTO;
 import com.tobeto.entity.type.DesktopCase;
 import com.tobeto.service.type.CaseService;
 
@@ -46,5 +48,18 @@ public class DesktopCaseController {
 		// System.out.println(dto.getModel());
 		return new SuccessResponseDTO();
 	}
-	
+
+	@PutMapping("/put")
+	public SuccessResponseDTO putSubType(@RequestBody DesktopCasePutRequestDTO dto) {
+		DesktopCase desktopCase = requestMapper.map(dto, DesktopCase.class);
+		/*
+		 * cpu.setBrand(dto.getBrand()); cpu.setClockSpeed(dto.getClockSpeed());
+		 * cpu.setGeneration(dto.getGeneration()); cpu.setCoreCount(dto.getCoreCount());
+		 * cpu.setModel(dto.getModel()); cpu.setSeries(dto.getSeries());
+		 * cpu.setSocketType(dto.getSocketType());
+		 */
+		caseService.updateDesktopCase(desktopCase.getId(), desktopCase);
+		return new SuccessResponseDTO();
+	}
+
 }

@@ -33,14 +33,6 @@ public class CpuController {
 	@PostMapping("/add")
 	public SuccessResponseDTO addSubType(@RequestBody CpuAddRequestDTO dto) {
 		System.out.println("Cpu Post calisiyor.");
-		System.out.println(dto.getBrand());
-		System.out.println(dto.getClockSpeed());
-		System.out.println(dto.getCoreCount());
-		System.out.println(dto.getGeneration());
-		System.out.println(dto.getModel());
-		System.out.println(dto.getSeries());
-		System.out.println(dto.getSocketType());
-
 		Cpu cpu = requestMapper.map(dto, Cpu.class);
 		cpuService.createCpu(cpu);
 		return new SuccessResponseDTO();
@@ -48,23 +40,13 @@ public class CpuController {
 
 	@DeleteMapping(value = "/del", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public SuccessResponseDTO delSubType(@RequestBody CpuDelRequestDTO dto) {
-		System.out.println("Cpu Del calisiyor.");
-
 		cpuService.deleteCpu(dto.getId());
-
-		// System.out.println(dto.getModel());
 		return new SuccessResponseDTO();
 	}
 
 	@PutMapping("/put")
 	public SuccessResponseDTO putSubType(@RequestBody CpuPutRequestDTO dto) {
 		Cpu cpu = requestMapper.map(dto, Cpu.class);
-		/*
-		 * cpu.setBrand(dto.getBrand()); cpu.setClockSpeed(dto.getClockSpeed());
-		 * cpu.setGeneration(dto.getGeneration()); cpu.setCoreCount(dto.getCoreCount());
-		 * cpu.setModel(dto.getModel()); cpu.setSeries(dto.getSeries());
-		 * cpu.setSocketType(dto.getSocketType());
-		 */
 		cpuService.updateCpu(cpu.getId(), cpu);
 		return new SuccessResponseDTO();
 	}
