@@ -42,22 +42,13 @@ public class DesktopCaseController {
 	@DeleteMapping(value = "/del", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public SuccessResponseDTO delSubType(@RequestBody DesktopCaseDelRequestDTO dto) {
 		System.out.println("Case Del calisiyor.");
-
 		caseService.deleteCase(dto.getId());
-
-		// System.out.println(dto.getModel());
 		return new SuccessResponseDTO();
 	}
 
 	@PutMapping("/put")
 	public SuccessResponseDTO putSubType(@RequestBody DesktopCasePutRequestDTO dto) {
 		DesktopCase desktopCase = requestMapper.map(dto, DesktopCase.class);
-		/*
-		 * cpu.setBrand(dto.getBrand()); cpu.setClockSpeed(dto.getClockSpeed());
-		 * cpu.setGeneration(dto.getGeneration()); cpu.setCoreCount(dto.getCoreCount());
-		 * cpu.setModel(dto.getModel()); cpu.setSeries(dto.getSeries());
-		 * cpu.setSocketType(dto.getSocketType());
-		 */
 		caseService.updateDesktopCase(desktopCase.getId(), desktopCase);
 		return new SuccessResponseDTO();
 	}

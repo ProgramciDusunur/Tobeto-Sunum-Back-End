@@ -29,13 +29,6 @@ public class CaseService {
 	public void updateDesktopCase(int id, DesktopCase computerCase) {
 
 		DesktopCase currentCase = readDesktopCase(id);
-//		currentCase.setBrand(computerCase.getBrand());
-//		currentCase.setModel(computerCase.getModel());
-//		currentCase.setPsu(computerCase.isPsu());
-//		currentCase.setPsu_location(computerCase.getPsu_location());
-//		currentCase.setPsu_watt(computerCase.getPsu_watt());
-//		currentCase.setTransparent(computerCase.isTransparent());
-//		Bu farklı bir yol
 		currentCase = computerCase;
 		createDesktopCase(currentCase);
 
