@@ -40,6 +40,7 @@ public class CpuController {
 		System.out.println(dto.getModel());
 		System.out.println(dto.getSeries());
 		System.out.println(dto.getSocketType());
+
 		Cpu cpu = requestMapper.map(dto, Cpu.class);
 		cpuService.createCpu(cpu);
 		return new SuccessResponseDTO();

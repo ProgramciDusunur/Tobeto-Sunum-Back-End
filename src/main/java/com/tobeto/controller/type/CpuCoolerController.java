@@ -37,6 +37,9 @@ public class CpuCoolerController {
 		System.out.println(dto.getModel());
 		System.out.println(dto.getRpm());
 		System.out.println(dto.getType());
+
+		CpuCooler cpuCooler = requestMapper.map(dto, CpuCooler.class);
+		cpuCoolerService.createCpuCooler(cpuCooler);
 		return new SuccessResponseDTO();
 	}
 
