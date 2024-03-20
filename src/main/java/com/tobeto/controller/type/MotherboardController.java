@@ -1,5 +1,6 @@
 package com.tobeto.controller.type;
 
+import com.tobeto.entity.type.Ram;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -34,8 +35,9 @@ public class MotherboardController {
 
 	@PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public SuccessResponseDTO addSubType(@RequestBody MotherboardAddRequestDTO dto) {
+		Motherboard motherboard = requestMapper.map(dto, Motherboard.class);
+		motherboardService.createMotherboard(motherboard);
 		return new SuccessResponseDTO();
-
 	}
 
 	@DeleteMapping(value = "/del", consumes = MediaType.APPLICATION_JSON_VALUE)

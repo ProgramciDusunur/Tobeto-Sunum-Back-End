@@ -1,5 +1,6 @@
 package com.tobeto.controller.type;
 
+import com.tobeto.entity.type.Ram;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -34,6 +35,8 @@ public class PsuController {
 
 	@PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public SuccessResponseDTO addSubType(@RequestBody PsuAddRequestDTO dto) {
+		Psu psu = requestMapper.map(dto, Psu.class);
+		psuService.createPsu(psu);
 		return new SuccessResponseDTO();
 	}
 

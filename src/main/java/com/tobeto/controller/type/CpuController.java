@@ -32,7 +32,6 @@ public class CpuController {
 
 	@PostMapping("/add")
 	public SuccessResponseDTO addSubType(@RequestBody CpuAddRequestDTO dto) {
-		System.out.println("Cpu Post calisiyor.");
 		Cpu cpu = requestMapper.map(dto, Cpu.class);
 		cpuService.createCpu(cpu);
 		return new SuccessResponseDTO();
