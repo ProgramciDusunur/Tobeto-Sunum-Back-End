@@ -135,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `depo`.`stock` (
   UNIQUE INDEX `id_UNIQUE` (`id` ASC)
 ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS depo.stock_alert (
+CREATE TABLE IF NOT EXISTS `depo`.`stock_alert` (
     id INT NOT NULL AUTO_INCREMENT,
     employee_id BINARY(16) NOT NULL,
     stock_id INT NOT NULL,

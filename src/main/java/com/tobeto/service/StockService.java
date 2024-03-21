@@ -23,59 +23,74 @@ public class StockService {
 	private Depot depotRules;
 
 	public void createStock(Stock stock) {
-		// stockRepository.save(stock);
-
-		System.out.println("Modunu al: " + (111 % 5));
-
-		List<Shelf> shelvesMatchingStockId = shelfService.findAllByStockId(stock.getId());
-		int howManyShelfNeed = stock.getQuantity() / depotRules.getShelfCapacity(), currentShelfs = 0;
+		// stockRepository.insertStock(stock.getType(), stock.getQuantity(),
+		// stock.getTypeId());
+		Stock stockId = stockRepository.findStockByTypeAndTypeId(stock.getType(), stock.getTypeId());
+		System.out.println("Hedef stogun stock_id: " + stockId.getId());
+		System.out.println("Modunu al: " + (111 % depotRules.getShelfCapacity()));
+		int howManyShelfNeed = stock.getQuantity() / depotRules.getShelfCapacity(), currentShelfs = 0,
+				emptyShelfParts = 0;
+		// stock_idsi eslesen ve yeri olan raflari bul.
+		List<Shelf> emptyShelfs = shelfService.findAllEmptyShelfFromSpecificStockId(stockId.getId());
+		// stock_id ile eslesmis ve occupied_quantity > 0 ve occupied_quantity < 5 olan
+		// bos raflari guncelleyip, dolduruyor.
+		updateEmptyShelfs(emptyShelfs);
+		for (Shelf shelf : emptyShelfs) {
+			System.out.println(shelf);
+			emptyShelfParts += depotRules.getShelfCapacity() - shelf.getOccupiedQuantity();
+		}
+		// bos raflari doldurduktan sonra ihtiyacimiz olan raf sayisini guncelliyoruz.
+		howManyShelfNeed = (howManyShelfNeed) - (emptyShelfParts * 5);
+		System.out.println("bos bolumleri doldurduktan sonra ihtiyac duyulan shelf sayisi: " + (howManyShelfNeed));
+		System.out.println("Bos raflara doldurulmasi gereken urun sayisi: " + emptyShelfParts);
+		List<Shelf> shelvesMatchingStockId = shelfService.findAllByStockId(stockId.getId());
+		// eger Stock verisinde quantitye kisisel bir mudahele oldu ise hali hazirda
+		// olan raflari buluyoruz.
 		for (Shelf shelf : shelvesMatchingStockId) {
 			currentShelfs += shelf.getOccupiedQuantity();
 			System.out.println(shelf);
 		}
 		// 103-102 gibi raf kapasitesi (5)'e tam bolunmeyen ve arada kalan raf
 		// bolmelerini buluyoruz.
-		int remainingShelfCapacity = stock.getQuantity() % 5;
+		int remainingShelfCapacity = stock.getQuantity() % depotRules.getShelfCapacity();
 		// ekleyecegimiz urun daha once farkli raflarda bulunuyorsa ona gore raf
 		// sayimizi ayarlayacagiz
-		howManyShelfNeed = howManyShelfNeed - (currentShelfs / 5);
-
+		howManyShelfNeed = howManyShelfNeed - (currentShelfs / depotRules.getShelfCapacity());
+		// 5 den kucuk bolmeden kalan raf bolmesi sifirdan buyukse ekstra bir raf daha
+		// acmamiz gerek.
 		if (remainingShelfCapacity > 0) {
 			howManyShelfNeed++;
 		}
-		// tam dolu raflar için
-		for (int index = 0; index < howManyShelfNeed; index++) {
-			Shelf createShelf = new Shelf();
-			createShelf.setStockId(stock.getId());
-
-			if (remainingShelfCapacity > 0 && index == howManyShelfNeed - 1) {
-				createShelf.setOccupiedQuantity(remainingShelfCapacity);
-			} else {
-				createShelf.setOccupiedQuantity(5);
-			}
-
-			shelfService.createShelf(createShelf);
-		}
+		// tam dolu raflarimizi olusturduktan sonra en sonda eger ekstradan 0 dan buyuk
+		// ve 5 den kucuk bir ekstra alanimiz varsa onun icin raf ekliyoruz.
+		shelfService.createFullShelfs(howManyShelfNeed, remainingShelfCapacity, stockId.getId());
 		System.out.println("Modu alınan arta kalan raf bölmesinin sayisi: " + remainingShelfCapacity);
 
 		System.out.println("Lazim olan raf sayisi: " + howManyShelfNeed);
 	}
 
-	public Stock readGpu(int id) {
+	public void updateEmptyShelfs(List<Shelf> emptyShelfs) {
+		shelfService.updateEmptyShelfsToFull(emptyShelfs);
+	}
+
+	public Stock readStock(int id) {
 		Optional<Stock> stock = stockRepository.findById(id);
 		return stock.orElseThrow();
 	}
 
-	public void updateGpu(int id, Stock stock) {
-
-		Stock currentStock = readGpu(id);
+	public void updateStock(int id, Stock stock) {
+		Stock currentStock = readStock(id);
 		currentStock = stock;
 		createStock(currentStock);
 
 	}
 
+	public List<Stock> findAllStocks() {
+		return stockRepository.findAllByOrderById();
+	}
+
 	@Transactional
-	public void deleteGpu(int id) {
+	public void deleteStock(int id) {
 		stockRepository.deleteById(id);
 	}
 }

@@ -23,4 +23,7 @@ public interface ShelfRepository extends JpaRepository<Shelf, Integer> {
 	@Modifying
 	@Query(value = "INSERT INTO Shelf (occupied_quantity, stock_id) VALUES (:occupiedQuantity, :stockId)", nativeQuery = true)
 	void insertShelf(@Param("occupiedQuantity") int occupiedQuantity, @Param("stockId") int stockId);
+
+	@Query("SELECT s FROM Shelf s WHERE s.occupiedQuantity > 0 AND s.occupiedQuantity < 5 AND s.stockId = :stockId")
+	List<Shelf> findShelvesByOccupiedQuantityAndStockId(@Param("stockId") int stockId);
 }

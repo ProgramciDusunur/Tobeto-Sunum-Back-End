@@ -1,5 +1,7 @@
 package com.tobeto.controller;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -36,8 +38,18 @@ public class StockController {
 
 	@GetMapping("/get")
 	public SuccessResponseDTO getStock(@RequestBody StockGetRequestDTO dto) {
-
 		return new SuccessResponseDTO();
+	}
+
+	@GetMapping("/get/all")
+	public void getAllStocks() {
+		System.out.println("Get all calisiyor..");
+		List<Stock> stocks = stockService.findAllStocks();
+		System.out.println(stocks.size());
+		for (Stock stocks1 : stocks) {
+			System.out.println(stocks1);
+
+		}
 	}
 
 }
