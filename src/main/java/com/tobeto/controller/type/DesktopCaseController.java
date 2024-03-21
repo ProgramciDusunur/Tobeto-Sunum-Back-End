@@ -16,13 +16,13 @@ import com.tobeto.dto.type.desktopcase.DesktopCaseAddRequestDTO;
 import com.tobeto.dto.type.desktopcase.DesktopCaseDelRequestDTO;
 import com.tobeto.dto.type.desktopcase.DesktopCasePutRequestDTO;
 import com.tobeto.entity.type.DesktopCase;
-import com.tobeto.service.type.CaseService;
+import com.tobeto.service.type.DesktopCaseService;
 
 @RestController
 @RequestMapping("/api/v1/type/case")
 public class DesktopCaseController {
 	@Autowired
-	private CaseService caseService;
+	private DesktopCaseService caseService;
 
 	@Autowired
 	@Qualifier("requestMapper")
@@ -33,7 +33,7 @@ public class DesktopCaseController {
 	private ModelMapper responseMapper;
 
 	@PostMapping("/add")
-	public SuccessResponseDTO addCase(@RequestBody DesktopCaseAddRequestDTO dto) {
+	public SuccessResponseDTO addDesktopCase(@RequestBody DesktopCaseAddRequestDTO dto) {
 		DesktopCase desktopCase = requestMapper.map(dto, DesktopCase.class);
 		caseService.createDesktopCase(desktopCase);
 		return new SuccessResponseDTO();

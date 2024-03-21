@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Service
 @Data
-public class CaseService {
+public class DesktopCaseService {
 	@Autowired
 	CaseRepository caseRepository;
 

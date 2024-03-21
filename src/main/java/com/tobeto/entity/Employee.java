@@ -19,7 +19,7 @@ public class Employee {
 	private String name;
 	private String surname;
 	private String email;
-	private String rol;
+	private String role;
 	private String password;
 
 }

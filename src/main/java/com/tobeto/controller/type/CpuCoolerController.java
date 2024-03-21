@@ -32,7 +32,6 @@ public class CpuCoolerController {
 
 	@PostMapping("/add")
 	public SuccessResponseDTO addSubType(@RequestBody CpuCoolerAddRequestDTO dto) {
-
 		CpuCooler cpuCooler = requestMapper.map(dto, CpuCooler.class);
 		cpuCoolerService.createCpuCooler(cpuCooler);
 		return new SuccessResponseDTO();
@@ -40,7 +39,6 @@ public class CpuCoolerController {
 
 	@DeleteMapping(value = "/del", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public SuccessResponseDTO delSubType(@RequestBody CpuCoolerDelRequestDTO dto) {
-		System.out.println("CpuCooler Del calisiyor.");
 		cpuCoolerService.deleteCpuCooler(dto.getId());
 		return new SuccessResponseDTO();
 	}

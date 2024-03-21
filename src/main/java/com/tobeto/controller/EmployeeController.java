@@ -40,14 +40,16 @@ public class EmployeeController {
 	public AddResponseDTO AddResponseEmployeeDTO(@RequestBody EmployeeDTO dto) {
 		Employee employee = requestMapper.map(dto, Employee.class);
 		employeeService.createEmployee(employee);
+		System.out.println("Add çalisiyor");
 		return new AddResponseDTO(employee.getId());
+		
 	}
 
 	@GetMapping("/get")
 	public GetResponseDTO getEmployee(@RequestBody GetRequestDTO dto) {
 		Employee employee = employeeService.readEmployee(dto.getEmail());
 		return new GetResponseDTO(employee.getId(), employee.getName(), employee.getPassword(), employee.getEmail(),
-				employee.getRol());
+				employee.getRole());
 	}
 
 	@DeleteMapping("/del")
@@ -59,8 +61,8 @@ public class EmployeeController {
 	@PutMapping("/edit/role")
 	public EditRoleResponseDTO editRole(@RequestBody EditRoleRequestDTO dto) {
 		Employee employee = employeeService.readEmployee(dto.getEmail());
-		String previusRole = employee.getRol();
-		employee.setRol(dto.getRole());
+		String previusRole = employee.getRole();
+		employee.setRole(dto.getRole());
 		employeeService.createEmployee(employee);
 		System.out.println("Role.. Calisiyor");
 		return new EditRoleResponseDTO(previusRole, dto.getRole(), dto.getEmail(), employee.getName(),
