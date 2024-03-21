@@ -12,9 +12,9 @@ import jakarta.transaction.Transactional;
 
 @Service
 public class GpuService {
- @Autowired
+	@Autowired
 	GpuRepository gpuRepository;
-	
+
 	public void createGpu(Gpu gpu) {
 		gpuRepository.save(gpu);
 	}
@@ -23,19 +23,13 @@ public class GpuService {
 		Optional<Gpu> gpu = gpuRepository.findById(id);
 		return gpu.orElseThrow();
 	}
-	public void  updateGpu(int id, Gpu gpu) {
-		
-		Gpu currentGpu= readGpu(id);
-//		currentCase.setBrand(computerCase.getBrand());
-//		currentCase.setModel(computerCase.getModel());
-//		currentCase.setPsu(computerCase.isPsu());
-//		currentCase.setPsu_location(computerCase.getPsu_location());
-//		currentCase.setPsu_watt(computerCase.getPsu_watt());
-//		currentCase.setTransparent(computerCase.isTransparent());
-//		Bu farklı bir yol
-		currentGpu=gpu;
+
+	public void updateGpu(int id, Gpu gpu) {
+
+		Gpu currentGpu = readGpu(id);
+		currentGpu = gpu;
 		createGpu(currentGpu);
-		
+
 	}
 
 	@Transactional

@@ -118,13 +118,12 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 CREATE TABLE IF NOT EXISTS `depo`.`shelf` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT AUTO_INCREMENT,
   `occupied_quantity` INT NOT NULL,
-  `stock_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-  UNIQUE INDEX `stock_id_UNIQUE` (`stock_id` ASC)
+  `stock_id` INT,
+  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
+
 
 
 CREATE TABLE IF NOT EXISTS `depo`.`stock` (
@@ -133,12 +132,7 @@ CREATE TABLE IF NOT EXISTS `depo`.`stock` (
   `quantity` INT NOT NULL,
   `type_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-  CONSTRAINT `fk_shelf_id`
-    FOREIGN KEY (`type_id`)
-    REFERENCES `depo`.`shelf` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)
 ) ENGINE = InnoDB;
 
 

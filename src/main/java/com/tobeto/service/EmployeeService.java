@@ -39,5 +39,4 @@ public class EmployeeService {
 	public void deleteEmployee(String email) {
 		employeeRepository.deleteByEmail(email);
 	}
-
 }
