@@ -3,6 +3,8 @@ package com.tobeto.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.tobeto.entity.Shelf;
@@ -88,5 +90,29 @@ public class ShelfService {
 
 			createShelf(createShelf);
 		}
+	}
+
+	public void findTargetShelfsForDecreaseStockQuantity(int stockId, int howManyShelfPartNeed) {
+		int remainingShelfCapacity = howManyShelfPartNeed % depotRules.getShelfCapacity();
+		int howManyShelfNeed = howManyShelfPartNeed / depotRules.getShelfCapacity();
+		if (remainingShelfCapacity > 0) {
+			howManyShelfNeed++;
+		}
+		// howManyShelfNeed + 1, bir tane raf cekersek istedigimiz quantityden kucuk
+		// olabilir, o yuzden ekstra bir tane raf cekiyoruz
+		Pageable pageable = PageRequest.of(0, howManyShelfNeed + 1);
+		List<Shelf> targetShelfs = shelfRepository
+				.findShelvesByOccupiedQuantityAndStockIdOrderByOccupiedQuantityAsc(stockId, pageable);
+
+		for (Shelf shelf : targetShelfs) {
+			System.out.println(shelf);
+			if (howManyShelfPartNeed - shelf.getOccupiedQuantity() < 0) {
+				shelf.setOccupiedQuantity(shelf.getOccupiedQuantity() - howManyShelfPartNeed);
+			} else {
+				howManyShelfPartNeed -= shelf.getOccupiedQuantity();
+				shelf.setOccupiedQuantity(0);
+			}
+		}
+
 	}
 }

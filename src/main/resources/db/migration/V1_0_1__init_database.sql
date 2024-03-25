@@ -8,8 +8,7 @@ CREATE TABLE IF NOT EXISTS `depo`.`cpu` (
   `core_count` INT NOT NULL, 
   `model` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),  
   UNIQUE INDEX `model_UNIQUE` (`model` ASC)
 ) ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
@@ -25,8 +24,7 @@ CREATE TABLE IF NOT EXISTS `depo`.`motherboard` (
   `brand` VARCHAR(45) NOT NULL,
   `model` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),  
   UNIQUE INDEX `model_UNIQUE` (`model` ASC)
 ) ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
@@ -42,8 +40,7 @@ CREATE TABLE IF NOT EXISTS `depo`.`psu` (
   `brand` VARCHAR(45) NOT NULL,
   `model` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),  
   UNIQUE INDEX `model_UNIQUE` (`model` ASC)
 ) ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
@@ -59,8 +56,7 @@ CREATE TABLE IF NOT EXISTS `depo`.`cpu_cooler` (
   `brand` VARCHAR(50) NOT NULL,
   `model` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),  
   UNIQUE INDEX `model_UNIQUE` (`model` ASC)
 ) ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
@@ -76,8 +72,7 @@ CREATE TABLE IF NOT EXISTS `depo`.`ram` (
   `brand` VARCHAR(45) NOT NULL,
   `model` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),  
   UNIQUE INDEX `model_UNIQUE` (`model` ASC)
 ) ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
@@ -92,8 +87,7 @@ CREATE TABLE IF NOT EXISTS `depo`.`gpu` (
   `vram` INT NOT NULL,
   `memory_interface` INT NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC)
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC)  
 ) ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -109,8 +103,7 @@ CREATE TABLE IF NOT EXISTS `depo`.`desktop_case` (
   `transparent` TINYINT NOT NULL, 
   `psu_watt` INT NOT NULL, 
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-  UNIQUE INDEX `brand_UNIQUE` (`brand` ASC),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),  
   UNIQUE INDEX `model_UNIQUE` (`model` ASC)
 ) ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4

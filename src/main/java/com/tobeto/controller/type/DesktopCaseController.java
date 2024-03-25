@@ -18,6 +18,8 @@ import com.tobeto.dto.type.desktopcase.DesktopCasePutRequestDTO;
 import com.tobeto.entity.type.DesktopCase;
 import com.tobeto.service.type.DesktopCaseService;
 
+import jakarta.annotation.security.RolesAllowed;
+
 @RestController
 @RequestMapping("/api/v1/type/case")
 public class DesktopCaseController {
@@ -32,6 +34,7 @@ public class DesktopCaseController {
 	@Qualifier("responseMapper")
 	private ModelMapper responseMapper;
 
+	@RolesAllowed("{admin}")
 	@PostMapping("/add")
 	public SuccessResponseDTO addDesktopCase(@RequestBody DesktopCaseAddRequestDTO dto) {
 		DesktopCase desktopCase = requestMapper.map(dto, DesktopCase.class);

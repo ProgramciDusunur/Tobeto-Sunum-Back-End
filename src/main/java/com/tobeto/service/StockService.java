@@ -23,11 +23,8 @@ public class StockService {
 	private Depot depotRules;
 
 	public void createStock(Stock stock) {
-		// stockRepository.insertStock(stock.getType(), stock.getQuantity(),
-		// stock.getTypeId());
+		stockRepository.insertStock(stock.getType(), stock.getQuantity(), stock.getTypeId());
 		Stock stockId = stockRepository.findStockByTypeAndTypeId(stock.getType(), stock.getTypeId());
-		System.out.println("Hedef stogun stock_id: " + stockId.getId());
-		System.out.println("Modunu al: " + (111 % depotRules.getShelfCapacity()));
 		int howManyShelfNeed = stock.getQuantity() / depotRules.getShelfCapacity(), currentShelfs = 0,
 				emptyShelfParts = 0;
 		// stock_idsi eslesen ve yeri olan raflari bul.
@@ -41,8 +38,6 @@ public class StockService {
 		}
 		// bos raflari doldurduktan sonra ihtiyacimiz olan raf sayisini guncelliyoruz.
 		howManyShelfNeed = (howManyShelfNeed) - (emptyShelfParts * 5);
-		System.out.println("bos bolumleri doldurduktan sonra ihtiyac duyulan shelf sayisi: " + (howManyShelfNeed));
-		System.out.println("Bos raflara doldurulmasi gereken urun sayisi: " + emptyShelfParts);
 		List<Shelf> shelvesMatchingStockId = shelfService.findAllByStockId(stockId.getId());
 		// eger Stock verisinde quantitye kisisel bir mudahele oldu ise hali hazirda
 		// olan raflari buluyoruz.
@@ -64,9 +59,6 @@ public class StockService {
 		// tam dolu raflarimizi olusturduktan sonra en sonda eger ekstradan 0 dan buyuk
 		// ve 5 den kucuk bir ekstra alanimiz varsa onun icin raf ekliyoruz.
 		shelfService.createFullShelfs(howManyShelfNeed, remainingShelfCapacity, stockId.getId());
-		System.out.println("Modu alınan arta kalan raf bölmesinin sayisi: " + remainingShelfCapacity);
-
-		System.out.println("Lazim olan raf sayisi: " + howManyShelfNeed);
 	}
 
 	public void updateEmptyShelfs(List<Shelf> emptyShelfs) {
@@ -87,6 +79,19 @@ public class StockService {
 
 	public List<Stock> findAllStocks() {
 		return stockRepository.findAllByOrderById();
+	}
+
+	public void decreaseStockQuantity(int id, int quantity) {
+		Stock currentStock = readStock(id);
+		shelfService.findTargetShelfsForDecreaseStockQuantity(currentStock.getId(), quantity);
+
+		if (currentStock.getQuantity() - quantity < 0) {
+			currentStock.setQuantity(0);
+		} else {
+			currentStock.setQuantity(currentStock.getQuantity() - quantity);
+		}
+		stockRepository.save(currentStock);
+
 	}
 
 	@Transactional

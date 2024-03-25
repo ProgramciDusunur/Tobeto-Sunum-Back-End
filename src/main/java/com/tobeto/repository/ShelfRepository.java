@@ -3,6 +3,7 @@ package com.tobeto.repository;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -26,4 +27,12 @@ public interface ShelfRepository extends JpaRepository<Shelf, Integer> {
 
 	@Query("SELECT s FROM Shelf s WHERE s.occupiedQuantity > 0 AND s.occupiedQuantity < 5 AND s.stockId = :stockId")
 	List<Shelf> findShelvesByOccupiedQuantityAndStockId(@Param("stockId") int stockId);
+
+	@Query("SELECT s FROM Shelf s WHERE s.occupiedQuantity > 0 AND s.stockId = :stockId")
+	Shelf findShelfByOccupiedQuantityAndStockId(@Param("stockId") int stockId);
+
+	@Query("SELECT s FROM Shelf s WHERE s.occupiedQuantity > 0 AND s.stockId = :stockId ORDER BY s.occupiedQuantity ASC")
+	List<Shelf> findShelvesByOccupiedQuantityAndStockIdOrderByOccupiedQuantityAsc(@Param("stockId") int stockId,
+			Pageable pageable);
+
 }
