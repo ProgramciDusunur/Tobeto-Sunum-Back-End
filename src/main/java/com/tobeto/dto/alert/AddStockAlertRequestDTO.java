@@ -9,10 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-	public class  AddStockAlertRequestDTO {
+public class AddStockAlertRequestDTO {
 	private UUID employeeId;
 	private int stockId;
 	private int alertQuantity;
 
-	}
-
+}

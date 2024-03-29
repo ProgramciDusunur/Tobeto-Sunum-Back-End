@@ -115,4 +115,12 @@ public class ShelfService {
 		}
 
 	}
+
+	public List<Shelf> getAllEmptyShelves() {
+		return shelfRepository.findAllByOccupiedQuantity(0);
+	}
+
+	public void deleteShelfList(List<Shelf> shelfList) {
+		shelfRepository.deleteAll(shelfList);
+	}
 }

@@ -35,4 +35,6 @@ public interface ShelfRepository extends JpaRepository<Shelf, Integer> {
 	List<Shelf> findShelvesByOccupiedQuantityAndStockIdOrderByOccupiedQuantityAsc(@Param("stockId") int stockId,
 			Pageable pageable);
 
+	List<Shelf> findAllByOccupiedQuantity(int occupiedQuantity);
+
 }

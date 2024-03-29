@@ -23,6 +23,11 @@ public class StockService {
 	private Depot depotRules;
 
 	public void createStock(Stock stock) {
+		/*try {
+			// Block of code to try
+		} catch (Exception e) {
+			// Block of code to handle errors
+		}*/ // burasi tekrardan kontrol icin duzenlenecek
 		stockRepository.insertStock(stock.getType(), stock.getQuantity(), stock.getTypeId());
 		Stock stockId = stockRepository.findStockByTypeAndTypeId(stock.getType(), stock.getTypeId());
 		int howManyShelfNeed = stock.getQuantity() / depotRules.getShelfCapacity(), currentShelfs = 0,
