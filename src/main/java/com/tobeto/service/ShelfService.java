@@ -123,4 +123,8 @@ public class ShelfService {
 	public void deleteShelfList(List<Shelf> shelfList) {
 		shelfRepository.deleteAll(shelfList);
 	}
+
+	public List<Shelf> getAllShelves() {
+		return shelfRepository.findAll();
+	}
 }

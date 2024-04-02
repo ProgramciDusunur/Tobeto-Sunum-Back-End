@@ -22,18 +22,18 @@ public class StockService {
 	@Autowired
 	private Depot depotRules;
 
+	@Transactional
 	public void createStock(Stock stock) {
-		/*try {
-			// Block of code to try
-		} catch (Exception e) {
-			// Block of code to handle errors
-		}*/ // burasi tekrardan kontrol icin duzenlenecek
-		stockRepository.insertStock(stock.getType(), stock.getQuantity(), stock.getTypeId());
-		Stock stockId = stockRepository.findStockByTypeAndTypeId(stock.getType(), stock.getTypeId());
+		/*
+		 * try { // Block of code to try } catch (Exception e) { // Block of code to
+		 * handle errors }
+		 */
+		// burasi tekrardan kontrol icin duzenlenecek
+		int stockId = stockRepository.save(stock).getId();
 		int howManyShelfNeed = stock.getQuantity() / depotRules.getShelfCapacity(), currentShelfs = 0,
 				emptyShelfParts = 0;
 		// stock_idsi eslesen ve yeri olan raflari bul.
-		List<Shelf> emptyShelfs = shelfService.findAllEmptyShelfFromSpecificStockId(stockId.getId());
+		List<Shelf> emptyShelfs = shelfService.findAllEmptyShelfFromSpecificStockId(stockId);
 		// stock_id ile eslesmis ve occupied_quantity > 0 ve occupied_quantity < 5 olan
 		// bos raflari guncelleyip, dolduruyor.
 		updateEmptyShelfs(emptyShelfs);
@@ -43,7 +43,7 @@ public class StockService {
 		}
 		// bos raflari doldurduktan sonra ihtiyacimiz olan raf sayisini guncelliyoruz.
 		howManyShelfNeed = (howManyShelfNeed) - (emptyShelfParts * 5);
-		List<Shelf> shelvesMatchingStockId = shelfService.findAllByStockId(stockId.getId());
+		List<Shelf> shelvesMatchingStockId = shelfService.findAllByStockId(stockId);
 		// eger Stock verisinde quantitye kisisel bir mudahele oldu ise hali hazirda
 		// olan raflari buluyoruz.
 		for (Shelf shelf : shelvesMatchingStockId) {
@@ -63,7 +63,7 @@ public class StockService {
 		}
 		// tam dolu raflarimizi olusturduktan sonra en sonda eger ekstradan 0 dan buyuk
 		// ve 5 den kucuk bir ekstra alanimiz varsa onun icin raf ekliyoruz.
-		shelfService.createFullShelfs(howManyShelfNeed, remainingShelfCapacity, stockId.getId());
+		shelfService.createFullShelfs(howManyShelfNeed, remainingShelfCapacity, stockId);
 	}
 
 	public void updateEmptyShelfs(List<Shelf> emptyShelfs) {
