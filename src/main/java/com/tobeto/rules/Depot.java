@@ -7,7 +7,8 @@ import lombok.Data;
 @Service
 @Data
 public class Depot {
-	private int maximumShelf = 100;
+	// Bir sonraki guncellemeye kadar devre disi.
+	// private int maximumShelf = 100;
 	private int shelfCapacity = 5;
 
 }

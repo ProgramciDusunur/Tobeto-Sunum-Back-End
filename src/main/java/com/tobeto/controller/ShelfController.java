@@ -20,7 +20,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tobeto.dto.SuccessResponseDTO;
 import com.tobeto.dto.shelf.ShelfAddRequestDTO;
 import com.tobeto.dto.shelf.ShelfDelRequestDTO;
-import com.tobeto.dto.shelf.ShelfGetAllResponseDTO;
 import com.tobeto.entity.Shelf;
 import com.tobeto.service.ShelfService;
 
@@ -62,9 +61,9 @@ public class ShelfController {
 	@GetMapping("/get/all")
 	public ResponseEntity<String> getAllShelves() {
 		System.out.println("Raflarin tumunu alma basarili");
-		ShelfGetAllResponseDTO response = new ShelfGetAllResponseDTO();
+		// ShelfGetAllResponseDTO response = new ShelfGetAllResponseDTO();
 		List<Shelf> allShelves = shelfService.getAllShelves();
-		response.setAllAvailableShelves(allShelves);
+		// response.setAllAvailableShelves(allShelves);
 
 		// ObjectMapper kullanarak JSON'a dönüştürme (daha kolay kullanım için)
 		ObjectMapper objectMapper = new ObjectMapper();

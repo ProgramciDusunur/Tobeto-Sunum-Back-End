@@ -129,13 +129,12 @@ CREATE TABLE IF NOT EXISTS `depo`.`stock` (
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `depo`.`stock_alert` (
-    id INT NOT NULL AUTO_INCREMENT,
-    employee_id BINARY(16) NOT NULL,
+    id INT NOT NULL AUTO_INCREMENT,    
     stock_id INT NOT NULL,
     alert_quantity INT NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT idstock_alert_UNIQUE UNIQUE (id),
-    CONSTRAINT employee_id_UNIQUE UNIQUE (employee_id)
+    CONSTRAINT stock_id_UNIQUE UNIQUE (stock_id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS `depo`.`employee` (

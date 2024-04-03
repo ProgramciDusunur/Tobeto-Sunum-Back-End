@@ -1,7 +1,5 @@
 package com.tobeto.dto.alert;
 
-import java.util.UUID;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddStockAlertRequestDTO {
-	private UUID employeeId;
 	private int stockId;
 	private int alertQuantity;
 

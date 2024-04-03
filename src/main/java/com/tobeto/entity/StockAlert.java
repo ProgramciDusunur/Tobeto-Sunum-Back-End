@@ -1,7 +1,5 @@
 package com.tobeto.entity;
 
-import java.util.UUID;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,15 +11,12 @@ import lombok.Data;
 @Data
 public class StockAlert {
 
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		private int id;
-		@Column(name = "employee_id")
-		private UUID employeeId;
-		@Column(name = "stock_id")
-		private int stockId;
-		@Column(name = "alert_quantity")
-		private int alertQuantity;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	@Column(name = "stock_id")
+	private int stockId;
+	@Column(name = "alert_quantity")
+	private int alertQuantity;
 
-	}
-
+}
