@@ -83,7 +83,7 @@ public class StockService {
 	}
 
 	public List<Stock> findAllStocks() {
-		return stockRepository.findAllByOrderById();
+		return stockRepository.findAll();
 	}
 
 	public void decreaseStockQuantity(int id, int quantity) {
