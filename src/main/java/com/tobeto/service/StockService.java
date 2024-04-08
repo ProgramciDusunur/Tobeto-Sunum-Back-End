@@ -29,7 +29,9 @@ public class StockService {
 		 * handle errors }
 		 */
 		// burasi tekrardan kontrol icin duzenlenecek
-		int stockId = stockRepository.save(stock).getId();
+		stockRepository.insertStock(stock.getType(), stock.getQuantity(), stock.getTypeId());
+		Optional<Stock> addAndGetStockId = stockRepository.findStockByTypeAndTypeId(stock.getType(), stock.getTypeId());
+		int stockId = addAndGetStockId.get().getId();
 		int howManyShelfNeed = stock.getQuantity() / depotRules.getShelfCapacity(), currentShelfs = 0,
 				emptyShelfParts = 0;
 		// stock_idsi eslesen ve yeri olan raflari bul.
