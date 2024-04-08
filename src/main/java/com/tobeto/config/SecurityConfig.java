@@ -28,7 +28,7 @@ public class SecurityConfig {
 		.authorizeHttpRequests(authorize -> authorize			    
 			    .requestMatchers( "/api/v1/employee/edit/password").hasRole("rapor_kullanicisi")
 			    .requestMatchers("/api/v1/shelf/**", "/api/v1/stockalert/**", "/api/v1/employee/edit/password", "/api/v1/stock/get/**").hasAnyRole(roles)
-			    .requestMatchers("/api/v1/employee/del", "/api/v1/employee/add", "/api/v1/employee/get","/api/v1/employee/edit/password", "/api/v1/stock/**", "api/v1/login/**").hasRole("admin")
+			    .requestMatchers("/api/v1/employee/del", "/api/v1/employee/add", "/api/v1/employee/get","/api/v1/employee/edit/password", "/api/v1/stock/**", "api/v1/login/**", "/api/v1/employee/get/all").hasRole("admin")
 			    //.requestMatchers("/api/v1/**").denyAll()
 			    .anyRequest().denyAll()
 				)
