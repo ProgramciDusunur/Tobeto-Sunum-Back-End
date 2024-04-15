@@ -17,7 +17,9 @@ import com.tobeto.filter.JwtAuthorizationFilter;
 public class SecurityConfig {
 	@Autowired
 	private JwtAuthorizationFilter jwtAuthorizationFilter;
-	String[] roles = { "depo_sorumlusu", "admin" };
+	String[] allRoles = { "depo_sorumlusu", "admin", "rapor_kullanicisi"};
+	String[] roles = { "depo_sorumlusu", "admin"};
+	
 
 	@Bean
 	SecurityFilterChain filterRoles(HttpSecurity http) throws Exception {
@@ -26,9 +28,17 @@ public class SecurityConfig {
 		http
 		.csrf(AbstractHttpConfigurer::disable)
 		.authorizeHttpRequests(authorize -> authorize			    
-			    .requestMatchers( "/api/v1/employee/edit/password").hasRole("rapor_kullanicisi")
-			    .requestMatchers("/api/v1/shelf/**", "/api/v1/stockalert/**", "/api/v1/employee/edit/password", "/api/v1/stock/get/**").hasAnyRole(roles)
-			    .requestMatchers("/api/v1/employee/del", "/api/v1/employee/add", "/api/v1/employee/get","/api/v1/employee/edit/password", "/api/v1/stock/**", "api/v1/login/**").hasRole("admin")
+			    .requestMatchers( "/api/v1/employee/edit/password").hasAnyRole(allRoles)
+			    .requestMatchers("/api/v1/shelf/get/all").hasAnyRole(roles)
+			    .requestMatchers("/api/v1/shelf/add","/api/v1/shelf/del").hasRole("admin")
+			    .requestMatchers("/api/v1/stock/get/**").hasAnyRole(roles)
+			    .requestMatchers("/api/v1/stock/add","/api/v1/stock/del").hasRole("admin")
+			    .requestMatchers("/api/v1/stock/del/decrease/quantity").hasAnyRole(roles) // 
+			    .requestMatchers("api/v1/login/**").hasAnyRole(allRoles)
+			    .requestMatchers("/api/v1/type/**").hasRole("admin")
+			    .requestMatchers("/api/v1/stockalert/add","/api/v1/stockalert/get/all","/api/v1/stockalert/del").hasAnyRole(allRoles)
+			    .requestMatchers("/api/v1/employee/del", "/api/v1/employee/add").hasRole("admin")
+			    .requestMatchers("/api/v1/employee/get","/api/v1/employee/edit/password").hasRole("admin") 
 			    //.requestMatchers("/api/v1/**").denyAll()
 			    .anyRequest().denyAll()
 				)
