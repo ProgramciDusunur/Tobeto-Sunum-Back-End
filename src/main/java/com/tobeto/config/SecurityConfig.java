@@ -17,9 +17,8 @@ import com.tobeto.filter.JwtAuthorizationFilter;
 public class SecurityConfig {
 	@Autowired
 	private JwtAuthorizationFilter jwtAuthorizationFilter;
-	String[] allRoles = { "depo_sorumlusu", "admin", "rapor_kullanicisi"};
-	String[] roles = { "depo_sorumlusu", "admin"};
-	
+	String[] allRoles = { "depo_sorumlusu", "admin", "rapor_kullanicisi" };
+	String[] roles = { "depo_sorumlusu", "admin" };
 
 	@Bean
 	SecurityFilterChain filterRoles(HttpSecurity http) throws Exception {
@@ -38,7 +37,7 @@ public class SecurityConfig {
 			    .requestMatchers("/api/v1/type/**").hasRole("admin")
 			    .requestMatchers("/api/v1/stockalert/add","/api/v1/stockalert/get/all","/api/v1/stockalert/del").hasAnyRole(allRoles)
 			    .requestMatchers("/api/v1/employee/del", "/api/v1/employee/add").hasRole("admin")
-			    .requestMatchers("/api/v1/employee/get","/api/v1/employee/edit/password").hasRole("admin") 
+			    .requestMatchers("/api/v1/employee/get/**","/api/v1/employee/edit/password").hasRole("admin") 
 			    //.requestMatchers("/api/v1/**").denyAll()
 			    .anyRequest().denyAll()
 				)
