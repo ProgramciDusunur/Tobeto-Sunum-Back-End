@@ -75,26 +75,6 @@ public class EmployeeController {
 		return new ResponseEntity<>(jsonResponse, HttpStatus.OK);
 	}
 
-	@GetMapping("/get/all")
-	public ResponseEntity<String> getAllEmployees() {
-		System.out.println("Raflarin tumunu alma basarili");
-		// ShelfGetAllResponseDTO response = new ShelfGetAllResponseDTO();
-		List<Employee> allEmployees = employeeService.getAllEmployees();
-		// response.setAllAvailableShelves(allShelves);
-
-		// ObjectMapper kullanarak JSON'a dönüştürme (daha kolay kullanım için)
-		ObjectMapper objectMapper = new ObjectMapper();
-		String jsonResponse = "";
-		try {
-			jsonResponse = objectMapper.writeValueAsString(allEmployees);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-
-		return new ResponseEntity<>(jsonResponse, HttpStatus.OK);
-	}
-
 	@DeleteMapping("/del")
 	public DeleteResponseDTO deleteEmployee(@RequestBody DeleteRequestDTO dto) {
 		employeeService.deleteEmployee(dto.getEmail());
