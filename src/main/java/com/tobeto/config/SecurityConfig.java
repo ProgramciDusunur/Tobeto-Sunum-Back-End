@@ -27,6 +27,7 @@ public class SecurityConfig {
 		http
 		.csrf(AbstractHttpConfigurer::disable)
 		.authorizeHttpRequests(authorize -> authorize			    
+
 			    .requestMatchers( "/api/v1/employee/edit/password").hasAnyRole(allRoles)
 			    .requestMatchers("/api/v1/shelf/get/all").hasAnyRole(roles)
 			    .requestMatchers("/api/v1/shelf/add","/api/v1/shelf/del").hasRole("admin")
@@ -37,7 +38,13 @@ public class SecurityConfig {
 			    .requestMatchers("/api/v1/type/**").hasRole("admin")
 			    .requestMatchers("/api/v1/stockalert/add","/api/v1/stockalert/get/all","/api/v1/stockalert/del").hasAnyRole(allRoles)
 			    .requestMatchers("/api/v1/employee/del", "/api/v1/employee/add").hasRole("admin")
+<<<<<<< HEAD
 			    .requestMatchers("/api/v1/employee/get/**","/api/v1/employee/edit/password").hasRole("admin") 
+=======
+			    .requestMatchers("/api/v1/employee/get","/api/v1/employee/edit/password").hasRole("admin") 
+			    .requestMatchers("/api/v1/employee/get/all").hasRole("admin")
+
+>>>>>>> 53de9f434f9ba55d416da1a6df3993a194c18271
 			    //.requestMatchers("/api/v1/**").denyAll()
 			    .anyRequest().denyAll()
 				)

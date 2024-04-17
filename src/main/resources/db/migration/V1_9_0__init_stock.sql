@@ -4,5 +4,5 @@ CREATE TABLE IF NOT EXISTS `depo`.`stock` (
   `quantity` INT NOT NULL,
   `type_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC)
+  UNIQUE INDEX `type_type_id_UNIQUE` (`type`, `type_id`) -- type ve type_id birlikte benzersiz olmalı  
 ) ENGINE = InnoDB;
