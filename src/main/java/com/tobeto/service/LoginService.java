@@ -12,14 +12,17 @@ import com.tobeto.repository.LoginRepository;
 public class LoginService {
 	@Autowired
 	private LoginRepository loginRepository;
+	@Autowired
+	private TokenService tokenService;
 
-	public Optional<Employee> login(String employeeEmail, String employeePassword) {
+	public String login(String employeeEmail, String employeePassword) {
+		String token;
 		Optional<Employee> employee = loginRepository.findByEmail(employeeEmail);
 		if (employee.isPresent() && employee.get().getPassword().equals(employeePassword)) {
 			System.out.println("Admin: " + employee.get().getRole());
-
+			token = tokenService.createToken(employee.get());
 			System.out.println("Username exist and passwords are equal");
-			return employee;
+			return token;
 		} else {
 			System.out.println("Username not found or password wrong");
 			return null;
