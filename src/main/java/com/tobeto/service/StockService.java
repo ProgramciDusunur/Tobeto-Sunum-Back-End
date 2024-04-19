@@ -103,6 +103,8 @@ public class StockService {
 
 	@Transactional
 	public void deleteStock(int id) {
+		Stock targetStock = readStock(id);
+		decreaseStockQuantity(id, targetStock.getQuantity());
 		stockRepository.deleteById(id);
 	}
 }

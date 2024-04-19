@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS `depo`.`employee` (
   `surname` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `role` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC)
 ) ENGINE = InnoDB;

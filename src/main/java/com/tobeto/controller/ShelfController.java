@@ -1,6 +1,5 @@
 package com.tobeto.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,19 +41,9 @@ public class ShelfController {
 		return new SuccessResponseDTO();
 	}
 
-	@DeleteMapping("/del")
+	@PostMapping("/del")
 	public void delShelf(@RequestBody ShelfDelRequestDTO dto) {
-		List<Shelf> bosRaflar = shelfService.getAllEmptyShelves();
-		List<Integer> silinmekIstenenIdler = dto.getShelfIdList();
-		List<Shelf> silinecekRaflar = new ArrayList<>();
-		for (Shelf shelf : bosRaflar) {
-			if (silinmekIstenenIdler.contains(shelf.getId())) {
-				// System.out.println(shelf.getId() + " Numarali id silinmek isteniyor.");
-				silinecekRaflar.add(shelf);
-			}
-			// System.out.println(shelf);
-		}
-		shelfService.deleteShelfList(silinecekRaflar);
+		shelfService.removeShelf(dto.getId());
 	}
 
 	@GetMapping("/get/all")

@@ -127,4 +127,9 @@ public class ShelfService {
 	public List<Shelf> getAllShelves() {
 		return shelfRepository.findAll();
 	}
+
+	public void removeShelf(int id) {
+		shelfRepository.deleteById(id);
+	}
+
 }

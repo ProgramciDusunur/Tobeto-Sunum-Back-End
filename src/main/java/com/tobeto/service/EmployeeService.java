@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.tobeto.entity.Employee;
@@ -18,7 +19,11 @@ public class EmployeeService {
 	@Autowired
 	EmployeeRepository employeeRepository;
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	public void createEmployee(Employee employee) {
+		employee.setPassword(passwordEncoder.encode(employee.getPassword()));
 		employeeRepository.save(employee);
 	}
 

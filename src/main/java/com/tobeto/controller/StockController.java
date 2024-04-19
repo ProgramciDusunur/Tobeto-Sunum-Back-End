@@ -57,7 +57,7 @@ public class StockController {
 		return new SuccessResponseDTO();
 	}
 
-	@DeleteMapping("/del")
+	@PostMapping("/del")
 	public SuccessResponseDTO deleteStock(@RequestBody StockDelRequestDTO dto) {
 		stockService.deleteStock(dto.getId());
 		return new SuccessResponseDTO();
@@ -65,13 +65,7 @@ public class StockController {
 
 	@GetMapping("/get/all")
 	public ResponseEntity<String> getAllStocks() {
-		System.out.println("Get all calisiyor..");
 		List<Stock> stocks = stockService.findAllStocks();
-		System.out.println(stocks.size());
-		for (Stock stocks1 : stocks) {
-			System.out.println(stocks1);
-
-		}
 		// ObjectMapper kullanarak JSON'a dönüştürme (daha kolay kullanım için)
 		ObjectMapper objectMapper = new ObjectMapper();
 		String jsonResponse = "";
@@ -83,21 +77,4 @@ public class StockController {
 		}
 		return new ResponseEntity<>(jsonResponse, HttpStatus.OK);
 	}
-
-	/*
-	 * @GetMapping("/get/all") public ResponseEntity<String> getAllShelves() {
-	 * System.out.println("Raflarin tumunu alma basarili"); //
-	 * ShelfGetAllResponseDTO response = new ShelfGetAllResponseDTO(); List<Shelf>
-	 * allShelves = shelfService.getAllShelves(); //
-	 * response.setAllAvailableShelves(allShelves);
-	 * 
-	 * // ObjectMapper kullanarak JSON'a dönüştürme (daha kolay kullanım için)
-	 * ObjectMapper objectMapper = new ObjectMapper(); String jsonResponse = ""; try
-	 * { jsonResponse = objectMapper.writeValueAsString(allShelves); } catch
-	 * (JsonProcessingException e) { e.printStackTrace(); return new
-	 * ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); }
-	 * 
-	 * return new ResponseEntity<>(jsonResponse, HttpStatus.OK); }
-	 */
-
 }
