@@ -43,7 +43,7 @@ public class EmployeeController {
 	private ModelMapper responseMapper;
 
 	@PostMapping("/add")
-	public AddResponseDTO AddResponseEmployeeDTO(@RequestBody EmployeeDTO dto) {
+	public AddResponseDTO addEmployee(@RequestBody EmployeeDTO dto) {
 		Employee employee = requestMapper.map(dto, Employee.class);
 		employeeService.createEmployee(employee);
 		System.out.println("Add çalisiyor");

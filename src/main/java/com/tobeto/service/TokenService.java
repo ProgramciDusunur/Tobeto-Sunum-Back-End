@@ -42,8 +42,8 @@ public class TokenService {
 
 		Instant tarih = Instant.now().plus(60, ChronoUnit.MINUTES);
 
-		builder = builder.subject(employee.getSurname()).id(employee.getName())
-				.issuedAt(new Date()).expiration(Date.from(tarih));
+		builder = builder.subject(employee.getSurname()).id(employee.getName()).issuedAt(new Date())
+				.expiration(Date.from(tarih));
 
 		return builder.signWith(getKey()).compact();
 	}
