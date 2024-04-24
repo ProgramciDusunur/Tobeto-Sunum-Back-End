@@ -34,9 +34,9 @@ public class EmployeeService {
 
 	public Employee updatePassword(String email, String oldPassword, String newPassword) {
 		Employee employee = readEmployee(email);
-		if (employee.getPassword().equals(oldPassword)) {
-			employee.setPassword(newPassword);
-			createEmployee(employee);
+		if (passwordEncoder.matches(oldPassword, employee.getPassword())) {
+			employee.setPassword(passwordEncoder.encode(newPassword));
+			employeeRepository.save(employee);
 		}
 		return employee;
 	}

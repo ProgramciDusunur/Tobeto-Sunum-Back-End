@@ -49,22 +49,22 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 		String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
-		System.out.println("Requestin Header:  " + authHeader);
+		// System.out.println("Requestin Header: " + authHeader);
 		try {
 			if (authHeader != null && authHeader.startsWith("Bearer ")) {
 				// Autherization header'ı gönderilmiş ise ve "Bearer " ile başlıyorsa
 				String token = authHeader.substring(7);
 				if (!"".equals(token)) {
 					// token gönderilmiş ise
-					System.out.println("Token: " + token);
+					// System.out.println("Token: " + token);
 					Claims claims = tokenService.tokenKontrol(token);
-					System.out.println(claims.get("roller"));
+					// System.out.println(claims.get("roller"));
 					String email = claims.getId();
 					/*
 					 * @SuppressWarnings("unchecked") ArrayList<String> roller =
 					 * claims.get("roller", ArrayList.class);
 					 */
-					System.out.println("buraya kadar gelebildik");
+					// System.out.println("buraya kadar gelebildik");
 					List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
 					// String[] içindeki her bir rol için SimpleGrantedAuthority objesi oluşturup

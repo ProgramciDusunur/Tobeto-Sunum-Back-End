@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -75,8 +74,9 @@ public class EmployeeController {
 		return new ResponseEntity<>(jsonResponse, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/del")
+	@PostMapping("/del")
 	public DeleteResponseDTO deleteEmployee(@RequestBody DeleteRequestDTO dto) {
+		System.out.println(dto);
 		employeeService.deleteEmployee(dto.getEmail());
 		return new DeleteResponseDTO("Employee deleted.");
 	}
@@ -92,7 +92,7 @@ public class EmployeeController {
 				employee.getSurname());
 	}
 
-	@PutMapping("/edit/password")
+	@PostMapping("/edit/password")
 	public EditPasswordResponseDTO editPassword(@RequestBody EditPasswordRequestDTO dto) {
 		Employee employee = employeeService.updatePassword(dto.getEmail(), dto.getPreviousPassword(),
 				dto.getNewPassword());
@@ -102,7 +102,6 @@ public class EmployeeController {
 		} else {
 			message = "Error!";
 		}
-		System.out.println("Password.. Calisiyor");
 		return new EditPasswordResponseDTO(dto.getPreviousPassword(), dto.getNewPassword(), dto.getEmail(), message);
 	}
 }

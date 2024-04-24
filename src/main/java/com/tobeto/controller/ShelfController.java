@@ -48,7 +48,6 @@ public class ShelfController {
 
 	@GetMapping("/get/all")
 	public ResponseEntity<String> getAllShelves() {
-		System.out.println("Raflarin tumunu alma basarili");
 		// ShelfGetAllResponseDTO response = new ShelfGetAllResponseDTO();
 		List<Shelf> allShelves = shelfService.getAllShelves();
 		// response.setAllAvailableShelves(allShelves);
