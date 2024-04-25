@@ -25,18 +25,9 @@ public class CpuService {
 	}
 
 	public void updateCpu(int id, Cpu cpu) {
-
 		Cpu currentCpu = readCpu(id);
-//		currentCase.setBrand(computerCase.getBrand());
-//		currentCase.setModel(computerCase.getModel());
-//		currentCase.setPsu(computerCase.isPsu());
-//		currentCase.setPsu_location(computerCase.getPsu_location());
-//		currentCase.setPsu_watt(computerCase.getPsu_watt());
-//		currentCase.setTransparent(computerCase.isTransparent());
-//		Bu farklı bir yol
 		currentCpu = cpu;
 		createCpu(currentCpu);
-
 	}
 
 	@Transactional

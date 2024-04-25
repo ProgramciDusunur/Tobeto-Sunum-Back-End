@@ -26,9 +26,9 @@ public class SecurityConfig {
 		// @formatter:off
 		http
 		.csrf(AbstractHttpConfigurer::disable)
-		.authorizeHttpRequests(authorize -> authorize			    
-
+		.authorizeHttpRequests(authorize -> authorize			    				
 			    .requestMatchers( "/api/v1/employee/edit/password").hasAnyRole(allRoles)
+			    .requestMatchers( "/api/v1/employee/edit/password/admin").hasRole("admin")
 			    .requestMatchers("/api/v1/shelf/get/all").hasAnyRole(roles)
 			    .requestMatchers("/api/v1/shelf/add","/api/v1/shelf/del").hasRole("admin")
 			    .requestMatchers("/api/v1/stock/get/**").hasAnyRole(roles)

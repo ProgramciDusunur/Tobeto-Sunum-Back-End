@@ -41,6 +41,13 @@ public class EmployeeService {
 		return employee;
 	}
 
+	public Employee updatePasswordAdmin(String email, String newPassword) {
+		Employee employee = readEmployee(email);
+		employee.setPassword(passwordEncoder.encode(newPassword));
+		employeeRepository.save(employee);
+		return employee;
+	}
+
 	public List<Employee> getAllEmployees() {
 		return employeeRepository.findAll();
 	}

@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tobeto.dto.SuccessResponseDTO;
 import com.tobeto.dto.employee.AddResponseDTO;
 import com.tobeto.dto.employee.DeleteRequestDTO;
 import com.tobeto.dto.employee.DeleteResponseDTO;
+import com.tobeto.dto.employee.EditAdminPasswordRequestDTO;
 import com.tobeto.dto.employee.EditPasswordRequestDTO;
 import com.tobeto.dto.employee.EditPasswordResponseDTO;
 import com.tobeto.dto.employee.EditRoleRequestDTO;
@@ -104,4 +106,12 @@ public class EmployeeController {
 		}
 		return new EditPasswordResponseDTO(dto.getPreviousPassword(), dto.getNewPassword(), dto.getEmail(), message);
 	}
+
+	@PostMapping("/edit/password/admin")
+	public SuccessResponseDTO editPasswordAdmin(@RequestBody EditAdminPasswordRequestDTO dto) {
+		System.out.println("admin şifre değiştirme...");
+		employeeService.updatePasswordAdmin(dto.getEmail(), dto.getNewPassword());
+		return new SuccessResponseDTO();
+	}
+
 }

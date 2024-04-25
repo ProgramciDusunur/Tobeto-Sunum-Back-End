@@ -1,10 +1,11 @@
 package com.tobeto.controller.type;
 
-import com.tobeto.entity.type.Ram;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -12,9 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tobeto.dto.SuccessResponseDTO;
 import com.tobeto.dto.type.psu.PsuAddRequestDTO;
 import com.tobeto.dto.type.psu.PsuDelRequestDTO;
+import com.tobeto.dto.type.psu.PsuGetRequestDTO;
 import com.tobeto.dto.type.psu.PsuPutRequestDTO;
 import com.tobeto.entity.type.Psu;
 import com.tobeto.service.type.PsuService;
@@ -44,6 +48,23 @@ public class PsuController {
 	public SuccessResponseDTO delSubType(@RequestBody PsuDelRequestDTO dto) {
 		psuService.deletePsu(dto.getId());
 		return new SuccessResponseDTO();
+	}
+
+	@PostMapping(value = "/get", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> getSubType(@RequestBody PsuGetRequestDTO dto) {
+		Psu psu = psuService.readPsu(dto.getTypeId());
+
+		// ObjectMapper kullanarak JSON'a dönüştürme (daha kolay kullanım için)
+		ObjectMapper objectMapper = new ObjectMapper();
+		String jsonResponse = "";
+		try {
+			jsonResponse = objectMapper.writeValueAsString(psu);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		return new ResponseEntity<>(jsonResponse, HttpStatus.OK);
 	}
 
 	@PutMapping("/put")
