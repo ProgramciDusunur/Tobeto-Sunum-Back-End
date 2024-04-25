@@ -51,7 +51,7 @@ public class StockController {
 		return response;
 	}
 
-	@DeleteMapping("/del/decrease/quantity")
+	@PostMapping("/del/decrease/quantity")
 	public SuccessResponseDTO decreaseStockQuantity(@RequestBody StockDelDecreaseQuantityRequestDTO dto) {
 		stockService.decreaseStockQuantity(dto.getId(), dto.getQuantity());
 		return new SuccessResponseDTO();
