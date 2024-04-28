@@ -22,7 +22,6 @@ public class SecurityConfig {
 
 	@Bean
 	SecurityFilterChain filterRoles(HttpSecurity http) throws Exception {
-		System.out.println("admin filtresi calisiyor..");
 		// @formatter:off
 		http
 		.csrf(AbstractHttpConfigurer::disable)
