@@ -15,8 +15,8 @@ public class CpuService {
 	@Autowired
 	CpuRepository cpuRepository;
 
-	public void createCpu(Cpu cpu) {
-		cpuRepository.save(cpu);
+	public Cpu createCpu(Cpu cpu) {
+		return cpuRepository.save(cpu);
 	}
 
 	public Cpu readCpu(int id) {
