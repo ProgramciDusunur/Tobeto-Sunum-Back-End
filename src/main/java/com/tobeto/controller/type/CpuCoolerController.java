@@ -17,6 +17,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tobeto.dto.SuccessResponseDTO;
 import com.tobeto.dto.type.cpucooler.CpuCoolerAddRequestDTO;
+import com.tobeto.dto.type.cpucooler.CpuCoolerAddResponseDTO;
 import com.tobeto.dto.type.cpucooler.CpuCoolerDelRequestDTO;
 import com.tobeto.dto.type.cpucooler.CpuCoolerGetRequestDTO;
 import com.tobeto.dto.type.cpucooler.CpuCoolerPutRequestDTO;
@@ -36,10 +37,10 @@ public class CpuCoolerController {
 	private ModelMapper responseMapper;
 
 	@PostMapping("/add")
-	public SuccessResponseDTO addSubType(@RequestBody CpuCoolerAddRequestDTO dto) {
+	public CpuCoolerAddResponseDTO addSubType(@RequestBody CpuCoolerAddRequestDTO dto) {
 		CpuCooler cpuCooler = requestMapper.map(dto, CpuCooler.class);
-		cpuCoolerService.createCpuCooler(cpuCooler);
-		return new SuccessResponseDTO();
+		CpuCooler createdCpuCooler = cpuCoolerService.createCpuCooler(cpuCooler);
+		return new CpuCoolerAddResponseDTO(createdCpuCooler.getId());
 	}
 
 	@DeleteMapping(value = "/del", consumes = MediaType.APPLICATION_JSON_VALUE)

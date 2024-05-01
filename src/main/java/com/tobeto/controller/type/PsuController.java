@@ -17,6 +17,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tobeto.dto.SuccessResponseDTO;
 import com.tobeto.dto.type.psu.PsuAddRequestDTO;
+import com.tobeto.dto.type.psu.PsuAddResponseDTO;
 import com.tobeto.dto.type.psu.PsuDelRequestDTO;
 import com.tobeto.dto.type.psu.PsuGetRequestDTO;
 import com.tobeto.dto.type.psu.PsuPutRequestDTO;
@@ -38,10 +39,10 @@ public class PsuController {
 	private ModelMapper responseMapper;
 
 	@PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public SuccessResponseDTO addSubType(@RequestBody PsuAddRequestDTO dto) {
+	public PsuAddResponseDTO addSubType(@RequestBody PsuAddRequestDTO dto) {
 		Psu psu = requestMapper.map(dto, Psu.class);
-		psuService.createPsu(psu);
-		return new SuccessResponseDTO();
+		Psu createdPsu = psuService.createPsu(psu);
+		return new PsuAddResponseDTO(createdPsu.getId());
 	}
 
 	@DeleteMapping(value = "/del", consumes = MediaType.APPLICATION_JSON_VALUE)

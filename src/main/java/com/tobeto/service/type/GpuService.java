@@ -15,8 +15,8 @@ public class GpuService {
 	@Autowired
 	GpuRepository gpuRepository;
 
-	public void createGpu(Gpu gpu) {
-		gpuRepository.save(gpu);
+	public Gpu createGpu(Gpu gpu) {
+		return gpuRepository.save(gpu);
 	}
 
 	public Gpu readGpu(int id) {

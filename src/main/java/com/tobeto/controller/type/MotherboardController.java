@@ -17,6 +17,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tobeto.dto.SuccessResponseDTO;
 import com.tobeto.dto.type.motherboard.MotherboardAddRequestDTO;
+import com.tobeto.dto.type.motherboard.MotherboardAddResponseDTO;
 import com.tobeto.dto.type.motherboard.MotherboardDelRequestDTO;
 import com.tobeto.dto.type.motherboard.MotherboardGetRequestDTO;
 import com.tobeto.dto.type.motherboard.MotherboardPutRequestDTO;
@@ -38,10 +39,10 @@ public class MotherboardController {
 	private ModelMapper responseMapper;
 
 	@PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public SuccessResponseDTO addSubType(@RequestBody MotherboardAddRequestDTO dto) {
+	public MotherboardAddResponseDTO addSubType(@RequestBody MotherboardAddRequestDTO dto) {
 		Motherboard motherboard = requestMapper.map(dto, Motherboard.class);
-		motherboardService.createMotherboard(motherboard);
-		return new SuccessResponseDTO();
+		Motherboard createdMotherboard = motherboardService.createMotherboard(motherboard);
+		return new MotherboardAddResponseDTO(createdMotherboard.getId());
 	}
 
 	@DeleteMapping(value = "/del", consumes = MediaType.APPLICATION_JSON_VALUE)

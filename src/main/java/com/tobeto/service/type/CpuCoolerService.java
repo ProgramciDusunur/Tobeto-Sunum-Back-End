@@ -15,8 +15,8 @@ public class CpuCoolerService {
 	@Autowired
 	CpuCoolerRepository cpuCoolerRepository;
 
-	public void createCpuCooler(CpuCooler cpucooler) {
-		cpuCoolerRepository.save(cpucooler);
+	public CpuCooler createCpuCooler(CpuCooler cpucooler) {
+		return cpuCoolerRepository.save(cpucooler);
 	}
 
 	public CpuCooler readCpuCooler(int id) {

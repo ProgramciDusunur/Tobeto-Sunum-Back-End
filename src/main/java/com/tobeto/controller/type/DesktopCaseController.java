@@ -17,6 +17,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tobeto.dto.SuccessResponseDTO;
 import com.tobeto.dto.type.desktopcase.DesktopCaseAddRequestDTO;
+import com.tobeto.dto.type.desktopcase.DesktopCaseAddResponseDTO;
 import com.tobeto.dto.type.desktopcase.DesktopCaseDelRequestDTO;
 import com.tobeto.dto.type.desktopcase.DesktopCaseGetRequestDTO;
 import com.tobeto.dto.type.desktopcase.DesktopCasePutRequestDTO;
@@ -41,10 +42,10 @@ public class DesktopCaseController {
 
 	@RolesAllowed("{admin}")
 	@PostMapping("/add")
-	public SuccessResponseDTO addDesktopCase(@RequestBody DesktopCaseAddRequestDTO dto) {
+	public DesktopCaseAddResponseDTO addDesktopCase(@RequestBody DesktopCaseAddRequestDTO dto) {
 		DesktopCase desktopCase = requestMapper.map(dto, DesktopCase.class);
-		caseService.createDesktopCase(desktopCase);
-		return new SuccessResponseDTO();
+		DesktopCase createdDesktopCase = caseService.createDesktopCase(desktopCase);
+		return new DesktopCaseAddResponseDTO(createdDesktopCase.getId());
 	}
 
 	@DeleteMapping(value = "/del", consumes = MediaType.APPLICATION_JSON_VALUE)

@@ -17,8 +17,8 @@ public class DesktopCaseService {
 	@Autowired
 	CaseRepository caseRepository;
 
-	public void createDesktopCase(DesktopCase computerCase) {
-		caseRepository.save(computerCase);
+	public DesktopCase createDesktopCase(DesktopCase computerCase) {
+		return caseRepository.save(computerCase);
 	}
 
 	public DesktopCase readDesktopCase(int id) {

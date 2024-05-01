@@ -17,6 +17,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tobeto.dto.SuccessResponseDTO;
 import com.tobeto.dto.type.ram.RamAddRequestDTO;
+import com.tobeto.dto.type.ram.RamAddResponseDTO;
 import com.tobeto.dto.type.ram.RamDelRequestDTO;
 import com.tobeto.dto.type.ram.RamGetRequestDTO;
 import com.tobeto.dto.type.ram.RamPutRequestDTO;
@@ -38,10 +39,10 @@ public class RamController {
 	private ModelMapper responseMapper;
 
 	@PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public SuccessResponseDTO addSubType(@RequestBody RamAddRequestDTO dto) {
+	public RamAddResponseDTO addSubType(@RequestBody RamAddRequestDTO dto) {
 		Ram ram = requestMapper.map(dto, Ram.class);
-		ramService.createRam(ram);
-		return new SuccessResponseDTO();
+		Ram createdRam = ramService.createRam(ram);
+		return new RamAddResponseDTO(createdRam.getId());
 	}
 
 	@DeleteMapping(value = "/del", consumes = MediaType.APPLICATION_JSON_VALUE)

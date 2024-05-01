@@ -15,8 +15,8 @@ public class MotherboardService {
 	@Autowired
 	MotherboardRepository motherboardRepository;
 
-	public void createMotherboard(Motherboard motherboard) {
-		motherboardRepository.save(motherboard);
+	public Motherboard createMotherboard(Motherboard motherboard) {
+		return motherboardRepository.save(motherboard);
 	}
 
 	public Motherboard readMotherboard(int id) {

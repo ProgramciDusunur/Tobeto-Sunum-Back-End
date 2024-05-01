@@ -17,6 +17,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tobeto.dto.SuccessResponseDTO;
 import com.tobeto.dto.type.gpu.GpuAddRequestDTO;
+import com.tobeto.dto.type.gpu.GpuAddResponseDTO;
 import com.tobeto.dto.type.gpu.GpuDelRequestDTO;
 import com.tobeto.dto.type.gpu.GpuGetRequestDTO;
 import com.tobeto.dto.type.gpu.GpuPutRequestDTO;
@@ -36,10 +37,10 @@ public class GpuController {
 	private ModelMapper responseMapper;
 
 	@PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public SuccessResponseDTO addSubType(@RequestBody GpuAddRequestDTO dto) {
+	public GpuAddResponseDTO addSubType(@RequestBody GpuAddRequestDTO dto) {
 		Gpu gpu = requestMapper.map(dto, Gpu.class);
-		gpuService.createGpu(gpu);
-		return new SuccessResponseDTO();
+		Gpu createdGpu = gpuService.createGpu(gpu);
+		return new GpuAddResponseDTO(createdGpu.getId());
 
 	}
 
