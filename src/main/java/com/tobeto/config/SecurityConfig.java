@@ -26,14 +26,21 @@ public class SecurityConfig {
 		http
 		.csrf(AbstractHttpConfigurer::disable)
 		.authorizeHttpRequests(authorize -> authorize			    				
-			    .requestMatchers( "/api/v1/employee/edit/password").hasAnyRole(allRoles)
-			    .requestMatchers( "/api/v1/employee/edit/password/admin").hasRole("admin")
+			    .requestMatchers("/api/v1/employee/edit/password").hasAnyRole(allRoles)
+			    .requestMatchers("/api/v1/employee/edit/password/admin").hasRole("admin")
 			    .requestMatchers("/api/v1/shelf/get/all").hasAnyRole(roles)
 			    .requestMatchers("/api/v1/shelf/add","/api/v1/shelf/del").hasRole("admin")
 			    .requestMatchers("/api/v1/stock/get/**").hasAnyRole(roles)
 			    .requestMatchers("/api/v1/stock/add","/api/v1/stock/del").hasRole("admin")
 			    .requestMatchers("/api/v1/stock/del/decrease/quantity").hasAnyRole(roles) // 
 			    .requestMatchers("api/v1/login/**").permitAll()
+			    .requestMatchers("/api/v1/type/gpu/get").hasAnyRole(allRoles)
+			    .requestMatchers("/api/v1/type/cpu/get").hasAnyRole(allRoles)
+			    .requestMatchers("/api/v1/type/psu/get").hasAnyRole(allRoles)
+			    .requestMatchers("/api/v1/type/cpucooler/get").hasAnyRole(allRoles)
+			    .requestMatchers("/api/v1/type/case/get").hasAnyRole(allRoles)
+			    .requestMatchers("/api/v1/type/motherboard/get").hasAnyRole(allRoles)
+			    .requestMatchers("/api/v1/type/ram/get").hasAnyRole(allRoles)
 			    .requestMatchers("/api/v1/type/**").hasRole("admin")
 			    .requestMatchers("/api/v1/stockalert/add","/api/v1/stockalert/get/all","/api/v1/stockalert/del").hasAnyRole(allRoles)
 			    .requestMatchers("/api/v1/employee/del", "/api/v1/employee/add").hasRole("admin")
