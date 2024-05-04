@@ -3,7 +3,7 @@ package com.tobeto.dto.type.cpu;
 import lombok.Data;
 
 @Data
-public class CpuPutRequestDTO {
+public class CpuPostRequestDTO {
 	private int id;
 	private String brand;
 	private int clockSpeed;

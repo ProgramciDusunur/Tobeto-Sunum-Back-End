@@ -20,7 +20,8 @@ import com.tobeto.dto.type.cpu.CpuAddRequestDTO;
 import com.tobeto.dto.type.cpu.CpuAddResponseDTO;
 import com.tobeto.dto.type.cpu.CpuDelRequestDTO;
 import com.tobeto.dto.type.cpu.CpuGetRequestDTO;
-import com.tobeto.dto.type.cpu.CpuPutRequestDTO;
+import com.tobeto.dto.type.cpu.CpuPostRequestDTO;
+
 import com.tobeto.entity.type.Cpu;
 import com.tobeto.service.type.CpuService;
 
@@ -66,8 +67,8 @@ public class CpuController {
 		return new ResponseEntity<>(jsonResponse, HttpStatus.OK);
 	}
 
-	@PutMapping("/put")
-	public SuccessResponseDTO putSubType(@RequestBody CpuPutRequestDTO dto) {
+	@PostMapping("/put")
+	public SuccessResponseDTO posttSubType(@RequestBody CpuPostRequestDTO dto) {
 		Cpu cpu = requestMapper.map(dto, Cpu.class);
 		cpuService.updateCpu(cpu.getId(), cpu);
 		return new SuccessResponseDTO();

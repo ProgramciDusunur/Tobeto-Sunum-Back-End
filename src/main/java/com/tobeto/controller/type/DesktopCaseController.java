@@ -72,7 +72,7 @@ public class DesktopCaseController {
 		return new ResponseEntity<>(jsonResponse, HttpStatus.OK);
 	}
 
-	@PutMapping("/put")
+	@PostMapping("/put")
 	public SuccessResponseDTO putSubType(@RequestBody DesktopCasePutRequestDTO dto) {
 		DesktopCase desktopCase = requestMapper.map(dto, DesktopCase.class);
 		caseService.updateDesktopCase(desktopCase.getId(), desktopCase);

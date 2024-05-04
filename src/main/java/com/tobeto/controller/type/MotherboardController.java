@@ -68,7 +68,7 @@ public class MotherboardController {
 		return new ResponseEntity<>(jsonResponse, HttpStatus.OK);
 	}
 
-	@PutMapping("/put")
+	@PostMapping("/put")
 	public SuccessResponseDTO putSubType(@RequestBody MotherboardPutRequestDTO dto) {
 		Motherboard motherboard = requestMapper.map(dto, Motherboard.class);
 		motherboardService.updateMotherboard(motherboard.getId(), motherboard);

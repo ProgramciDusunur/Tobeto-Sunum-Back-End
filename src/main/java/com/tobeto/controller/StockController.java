@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tobeto.dto.SuccessResponseDTO;
+import com.tobeto.dto.stock.EditStockRequestDTO;
 import com.tobeto.dto.stock.StockAddRequestDTO;
 import com.tobeto.dto.stock.StockDelDecreaseQuantityRequestDTO;
 import com.tobeto.dto.stock.StockDelRequestDTO;
@@ -53,6 +55,13 @@ public class StockController {
 	@PostMapping("/del/decrease/quantity")
 	public SuccessResponseDTO decreaseStockQuantity(@RequestBody StockDelDecreaseQuantityRequestDTO dto) {
 		stockService.decreaseStockQuantity(dto.getId(), dto.getQuantity());
+		return new SuccessResponseDTO();
+	}
+	
+	@PostMapping("/put")
+	public SuccessResponseDTO editStock(@RequestBody EditStockRequestDTO dto) {
+		
+		stockService.updateStock(dto.getId(),dto.getQuantity());
 		return new SuccessResponseDTO();
 	}
 

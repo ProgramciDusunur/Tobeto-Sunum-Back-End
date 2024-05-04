@@ -31,7 +31,7 @@ public class SecurityConfig {
 			    .requestMatchers("/api/v1/shelf/get/all").hasAnyRole(roles)
 			    .requestMatchers("/api/v1/shelf/add","/api/v1/shelf/del").hasRole("admin")
 			    .requestMatchers("/api/v1/stock/get/**").hasAnyRole(roles)
-			    .requestMatchers("/api/v1/stock/add","/api/v1/stock/del").hasRole("admin")
+			    .requestMatchers("/api/v1/stock/add","/api/v1/stock/del","/api/v1/stock/put").hasRole("admin")
 			    .requestMatchers("/api/v1/stock/del/decrease/quantity").hasAnyRole(roles) // 
 			    .requestMatchers("api/v1/login/**").permitAll()
 			    .requestMatchers("/api/v1/type/**").hasRole("admin")

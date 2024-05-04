@@ -67,7 +67,7 @@ public class GpuController {
 		return new ResponseEntity<>(jsonResponse, HttpStatus.OK);
 	}
 
-	@PutMapping("/put")
+	@PostMapping("/put")
 	public SuccessResponseDTO putSubType(@RequestBody GpuPutRequestDTO dto) {
 		Gpu gpu = requestMapper.map(dto, Gpu.class);
 		gpuService.updateGpu(gpu.getId(), gpu);

@@ -66,7 +66,7 @@ public class CpuCoolerController {
 		return new ResponseEntity<>(jsonResponse, HttpStatus.OK);
 	}
 
-	@PutMapping("/put")
+	@PostMapping("/put")
 	public SuccessResponseDTO putSubType(@RequestBody CpuCoolerPutRequestDTO dto) {
 		CpuCooler cpuCooler = requestMapper.map(dto, CpuCooler.class);
 		cpuCoolerService.updateCpuCooler(cpuCooler.getId(), cpuCooler);

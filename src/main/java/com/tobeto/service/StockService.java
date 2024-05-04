@@ -77,11 +77,10 @@ public class StockService {
 		return stock.orElseThrow();
 	}
 
-	public void updateStock(int id, Stock stock) {
+	public void updateStock(int id, int quantity) {
 		Stock currentStock = readStock(id);
-		currentStock = stock;
-		createStock(currentStock);
-
+		currentStock.setQuantity(quantity);
+		stockRepository.save(currentStock);
 	}
 
 	public List<Stock> findAllStocks() {

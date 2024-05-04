@@ -68,7 +68,7 @@ public class RamController {
 		return new ResponseEntity<>(jsonResponse, HttpStatus.OK);
 	}
 
-	@PutMapping("/put")
+	@PostMapping("/put")
 	public SuccessResponseDTO putSubType(@RequestBody RamPutRequestDTO dto) {
 		Ram ram = requestMapper.map(dto, Ram.class);
 		ramService.updateRam(ram.getId(), ram);

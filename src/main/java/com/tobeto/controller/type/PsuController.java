@@ -68,7 +68,7 @@ public class PsuController {
 		return new ResponseEntity<>(jsonResponse, HttpStatus.OK);
 	}
 
-	@PutMapping("/put")
+	@PostMapping("/put")
 	public SuccessResponseDTO putSubType(@RequestBody PsuPutRequestDTO dto) {
 		Psu psu = requestMapper.map(dto, Psu.class);
 		psuService.updatePsu(psu.getId(), psu);
