@@ -1,5 +1,6 @@
 package com.tobeto.service.type;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,10 @@ public class CpuService {
 	public Cpu readCpu(int id) {
 		Optional<Cpu> cpu = cpuRepository.findById(id);
 		return cpu.orElseThrow();
+	}
+
+	public List<Cpu> readAllCpus() {
+		return cpuRepository.findAll();
 	}
 
 	public void updateCpu(int id, Cpu cpu) {

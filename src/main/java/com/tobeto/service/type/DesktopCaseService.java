@@ -1,5 +1,6 @@
 package com.tobeto.service.type;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,10 @@ public class DesktopCaseService {
 	public DesktopCase readDesktopCase(int id) {
 		Optional<DesktopCase> computerCase = caseRepository.findById(id);
 		return computerCase.orElseThrow();
+	}
+
+	public List<DesktopCase> readAllDesktopCases() {
+		return caseRepository.findAll();
 	}
 
 	public void updateDesktopCase(int id, DesktopCase computerCase) {

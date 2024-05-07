@@ -1,5 +1,6 @@
 package com.tobeto.service.type;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,10 @@ public class RamService {
 	public Ram readRam(int id) {
 		Optional<Ram> ram = ramRepository.findById(id);
 		return ram.orElseThrow();
+	}
+
+	public List<Ram> readAllRam() {
+		return ramRepository.findAll();
 	}
 
 	public void updateRam(int id, Ram ram) {

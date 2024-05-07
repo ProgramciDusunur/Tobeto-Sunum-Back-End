@@ -1,5 +1,6 @@
 package com.tobeto.service.type;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,10 @@ public class CpuCoolerService {
 	public CpuCooler readCpuCooler(int id) {
 		Optional<CpuCooler> cpuCooler = cpuCoolerRepository.findById(id);
 		return cpuCooler.orElseThrow();
+	}
+
+	public List<CpuCooler> readAllCpuCoolers() {
+		return cpuCoolerRepository.findAll();
 	}
 
 	public void updateCpuCooler(int id, CpuCooler cpuCooler) {

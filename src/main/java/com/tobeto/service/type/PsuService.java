@@ -1,5 +1,6 @@
 package com.tobeto.service.type;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,10 @@ public class PsuService {
 	public Psu readPsu(int id) {
 		Optional<Psu> psu = psuRepository.findById(id);
 		return psu.orElseThrow();
+	}
+
+	public List<Psu> readAllPsu() {
+		return psuRepository.findAll();
 	}
 
 	public void updatePsu(int id, Psu psu) {

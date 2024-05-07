@@ -1,5 +1,6 @@
 package com.tobeto.service.type;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,19 +25,14 @@ public class MotherboardService {
 		return cpu.orElseThrow();
 	}
 
-	public void updateMotherboard(int id, Motherboard motherboard) {
+	public List<Motherboard> readAllMotherboard() {
+		return motherboardRepository.findAll();
+	}
 
+	public void updateMotherboard(int id, Motherboard motherboard) {
 		Motherboard currentMotherboard = readMotherboard(id);
-//		currentCase.setBrand(computerCase.getBrand());
-//		currentCase.setModel(computerCase.getModel());
-//		currentCase.setPsu(computerCase.isPsu());
-//		currentCase.setPsu_location(computerCase.getPsu_location());
-//		currentCase.setPsu_watt(computerCase.getPsu_watt());
-//		currentCase.setTransparent(computerCase.isTransparent());
-//		Bu farklı bir yol
 		currentMotherboard = motherboard;
 		createMotherboard(currentMotherboard);
-
 	}
 
 	@Transactional

@@ -1,5 +1,6 @@
 package com.tobeto.service.type;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,10 @@ public class GpuService {
 	public Gpu readGpu(int id) {
 		Optional<Gpu> gpu = gpuRepository.findById(id);
 		return gpu.orElseThrow();
+	}
+
+	public List<Gpu> readAllGraphicsCards() {
+		return gpuRepository.findAll();
 	}
 
 	public void updateGpu(int id, Gpu gpu) {
