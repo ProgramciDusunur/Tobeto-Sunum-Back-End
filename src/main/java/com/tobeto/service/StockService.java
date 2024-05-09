@@ -91,7 +91,6 @@ public class StockService {
 			currentStock.setQuantity(currentStock.getQuantity() - quantity);
 		}
 		stockRepository.save(currentStock);
-
 	}
 
 	@Transactional

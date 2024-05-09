@@ -48,10 +48,7 @@ public class ShelfController {
 
 	@GetMapping("/get/all")
 	public ResponseEntity<String> getAllShelves() {
-		// ShelfGetAllResponseDTO response = new ShelfGetAllResponseDTO();
 		List<Shelf> allShelves = shelfService.getAllShelves();
-		// response.setAllAvailableShelves(allShelves);
-
 		// ObjectMapper kullanarak JSON'a dönüştürme (daha kolay kullanım için)
 		ObjectMapper objectMapper = new ObjectMapper();
 		String jsonResponse = "";
