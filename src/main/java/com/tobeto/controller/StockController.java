@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,11 +56,10 @@ public class StockController {
 		stockService.decreaseStockQuantity(dto.getId(), dto.getQuantity());
 		return new SuccessResponseDTO();
 	}
-	
+
 	@PostMapping("/put")
 	public SuccessResponseDTO editStock(@RequestBody EditStockRequestDTO dto) {
-		
-		stockService.updateStock(dto.getId(),dto.getQuantity());
+		stockService.updateStock(dto.getId(), dto.getQuantity());
 		return new SuccessResponseDTO();
 	}
 

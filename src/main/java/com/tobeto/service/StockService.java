@@ -24,10 +24,6 @@ public class StockService {
 
 	@Transactional
 	public void createStock(Stock stock) {
-		/*
-		 * try { // Block of code to try } catch (Exception e) { // Block of code to
-		 * handle errors }
-		 */
 		// burasi tekrardan kontrol icin duzenlenecek
 		stockRepository.insertStock(stock.getType(), stock.getQuantity(), stock.getTypeId());
 		Optional<Stock> addAndGetStockId = stockRepository.findStockByTypeAndTypeId(stock.getType(), stock.getTypeId());
@@ -40,7 +36,6 @@ public class StockService {
 		// bos raflari guncelleyip, dolduruyor.
 		updateEmptyShelfs(emptyShelfs);
 		for (Shelf shelf : emptyShelfs) {
-			System.out.println(shelf);
 			emptyShelfParts += depotRules.getShelfCapacity() - shelf.getOccupiedQuantity();
 		}
 		// bos raflari doldurduktan sonra ihtiyacimiz olan raf sayisini guncelliyoruz.
@@ -50,7 +45,6 @@ public class StockService {
 		// olan raflari buluyoruz.
 		for (Shelf shelf : shelvesMatchingStockId) {
 			currentShelfs += shelf.getOccupiedQuantity();
-			System.out.println(shelf);
 		}
 		// 103-102 gibi raf kapasitesi (5)'e tam bolunmeyen ve arada kalan raf
 		// bolmelerini buluyoruz.

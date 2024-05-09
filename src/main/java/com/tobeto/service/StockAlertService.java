@@ -27,14 +27,6 @@ public class StockAlertService {
 		return stockAlert.orElseThrow();
 	}
 
-	public void updateStockAlert() {
-
-	}
-
-	public void alertQuantityNotification() {
-
-	}
-
 	public List<StockAlert> getAllStockAlerts() {
 		return stockAlertRepository.findAll();
 	}

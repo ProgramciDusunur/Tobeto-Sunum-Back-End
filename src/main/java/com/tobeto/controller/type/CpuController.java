@@ -55,7 +55,6 @@ public class CpuController {
 	public ResponseEntity<String> getSubType(@RequestBody CpuGetRequestDTO dto) {
 		Cpu cpu = cpuService.readCpu(dto.getTypeId());
 
-		// ObjectMapper kullanarak JSON'a dönüştürme (daha kolay kullanım için)
 		ObjectMapper objectMapper = new ObjectMapper();
 		String jsonResponse = "";
 		try {

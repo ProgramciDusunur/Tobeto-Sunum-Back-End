@@ -32,11 +32,9 @@ public class DesktopCaseService {
 	}
 
 	public void updateDesktopCase(int id, DesktopCase computerCase) {
-
 		DesktopCase currentCase = readDesktopCase(id);
 		currentCase = computerCase;
 		createDesktopCase(currentCase);
-
 	}
 
 	@Transactional

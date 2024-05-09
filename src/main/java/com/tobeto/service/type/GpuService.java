@@ -30,11 +30,9 @@ public class GpuService {
 	}
 
 	public void updateGpu(int id, Gpu gpu) {
-
 		Gpu currentGpu = readGpu(id);
 		currentGpu = gpu;
 		createGpu(currentGpu);
-
 	}
 
 	@Transactional
